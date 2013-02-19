@@ -29,6 +29,8 @@
 		350CEFAB16D39C2600329D5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350CEF7816D39C2600329D5C /* Foundation.framework */; };
 		350CEFB316D39C2600329D5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 350CEFB116D39C2600329D5C /* InfoPlist.strings */; };
 		350CEFB616D39C2600329D5C /* Randers_FlyveklubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 350CEFB516D39C2600329D5C /* Randers_FlyveklubTests.m */; };
+		35AFE13E16D3A4CD00FA4AE8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AFE13D16D3A4CC00FA4AE8 /* MapKit.framework */; };
+		35AFE14016D3A54B00FA4AE8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AFE13F16D3A54B00FA4AE8 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		350CEFB216D39C2600329D5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		350CEFB416D39C2600329D5C /* Randers_FlyveklubTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Randers_FlyveklubTests.h; sourceTree = "<group>"; };
 		350CEFB516D39C2600329D5C /* Randers_FlyveklubTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Randers_FlyveklubTests.m; sourceTree = "<group>"; };
+		35AFE13D16D3A4CC00FA4AE8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		35AFE13F16D3A54B00FA4AE8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35AFE14016D3A54B00FA4AE8 /* CoreLocation.framework in Frameworks */,
+				35AFE13E16D3A4CD00FA4AE8 /* MapKit.framework in Frameworks */,
 				350CEF7716D39C2600329D5C /* UIKit.framework in Frameworks */,
 				350CEF7916D39C2600329D5C /* Foundation.framework in Frameworks */,
 				350CEF7B16D39C2600329D5C /* CoreGraphics.framework in Frameworks */,
@@ -119,6 +125,8 @@
 		350CEF7516D39C2600329D5C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				35AFE13F16D3A54B00FA4AE8 /* CoreLocation.framework */,
+				35AFE13D16D3A4CC00FA4AE8 /* MapKit.framework */,
 				350CEF7616D39C2600329D5C /* UIKit.framework */,
 				350CEF7816D39C2600329D5C /* Foundation.framework */,
 				350CEF7A16D39C2600329D5C /* CoreGraphics.framework */,
@@ -130,18 +138,13 @@
 		350CEF7C16D39C2600329D5C /* Randers Flyveklub */ = {
 			isa = PBXGroup;
 			children = (
+				35AFE14116D3A74B00FA4AE8 /* Map */,
 				350CEF8516D39C2600329D5C /* AppDelegate.h */,
 				350CEF8616D39C2600329D5C /* AppDelegate.m */,
 				350CEF8E16D39C2600329D5C /* MainStoryboard_iPhone.storyboard */,
 				350CEF9116D39C2600329D5C /* MainStoryboard_iPad.storyboard */,
-				350CEF9416D39C2600329D5C /* FirstViewController.h */,
-				350CEF9516D39C2600329D5C /* FirstViewController.m */,
-				350CEF9716D39C2600329D5C /* first.png */,
-				350CEF9916D39C2600329D5C /* first@2x.png */,
 				350CEF9B16D39C2600329D5C /* SecondViewController.h */,
 				350CEF9C16D39C2600329D5C /* SecondViewController.m */,
-				350CEF9E16D39C2600329D5C /* second.png */,
-				350CEFA016D39C2600329D5C /* second@2x.png */,
 				350CEF7D16D39C2600329D5C /* Supporting Files */,
 			);
 			path = "Randers Flyveklub";
@@ -150,6 +153,10 @@
 		350CEF7D16D39C2600329D5C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				350CEF9716D39C2600329D5C /* first.png */,
+				350CEF9916D39C2600329D5C /* first@2x.png */,
+				350CEF9E16D39C2600329D5C /* second.png */,
+				350CEFA016D39C2600329D5C /* second@2x.png */,
 				350CEF7E16D39C2600329D5C /* Randers Flyveklub-Info.plist */,
 				350CEF7F16D39C2600329D5C /* InfoPlist.strings */,
 				350CEF8216D39C2600329D5C /* main.m */,
@@ -178,6 +185,15 @@
 				350CEFB116D39C2600329D5C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		35AFE14116D3A74B00FA4AE8 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				350CEF9416D39C2600329D5C /* FirstViewController.h */,
+				350CEF9516D39C2600329D5C /* FirstViewController.m */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -489,6 +505,7 @@
 				350CEFBB16D39C2600329D5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		350CEFBC16D39C2600329D5C /* Build configuration list for PBXNativeTarget "Randers FlyveklubTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +514,7 @@
 				350CEFBE16D39C2600329D5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

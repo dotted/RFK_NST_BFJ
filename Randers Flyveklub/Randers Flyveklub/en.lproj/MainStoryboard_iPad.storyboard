@@ -15,12 +15,17 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="20">
                                 <items/>
                             </toolbar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YrX-Jl-LNA"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="20" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="21X-Fc-h5m"/>
                             <constraint firstItem="20" firstAttribute="top" secondItem="17" secondAttribute="top" type="default" id="82v-FK-dPD"/>
+                            <constraint firstItem="YrX-Jl-LNA" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="D3C-Ee-mxp"/>
+                            <constraint firstItem="YrX-Jl-LNA" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="QpR-rI-G9m"/>
                             <constraint firstItem="20" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="i7B-V8-9lR"/>
+                            <constraint firstItem="YrX-Jl-LNA" firstAttribute="bottom" secondItem="17" secondAttribute="bottom" type="default" id="lxL-aY-XWI"/>
+                            <constraint firstItem="YrX-Jl-LNA" firstAttribute="top" secondItem="20" secondAttribute="bottom" type="default" id="uOI-VR-bPL"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="first" id="7"/>
@@ -37,17 +42,32 @@
                         <rect key="frame" x="0.0" y="20" width="768" height="955"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AtY-O0-4r7">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                             <navigationBar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23">
                                 <items>
-                                    <navigationItem id="24"/>
+                                    <navigationItem id="24">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="6ns-Sm-B6F">
+                                            <progressView key="customView" opaque="NO" contentMode="scaleToFill" progressViewStyle="bar" progress="0.5" id="6l6-ec-IbS">
+                                                <rect key="frame" x="7" y="17" width="170" height="11"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </progressView>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="jI7-Jb-RgL"/>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="23" firstAttribute="top" secondItem="16" secondAttribute="top" type="default" id="YQd-P8-ET5"/>
+                            <constraint firstItem="AtY-O0-4r7" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="b6l-wA-kKJ"/>
+                            <constraint firstItem="AtY-O0-4r7" firstAttribute="top" secondItem="23" secondAttribute="bottom" type="default" id="cfX-AA-mUf"/>
+                            <constraint firstItem="AtY-O0-4r7" firstAttribute="bottom" secondItem="16" secondAttribute="bottom" type="default" id="diq-74-dK5"/>
                             <constraint firstItem="23" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="eH6-Me-VTD"/>
                             <constraint firstItem="23" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="kTD-uS-vbp"/>
+                            <constraint firstItem="AtY-O0-4r7" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="txp-is-jeh"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Contacts" image="second" id="6"/>
