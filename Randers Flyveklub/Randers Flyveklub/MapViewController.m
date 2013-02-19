@@ -13,6 +13,7 @@
 @end
 
 @implementation MapViewController
+@synthesize mapView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +28,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    mapView.showsUserLocation = YES;
 }
 
 - (void)didReceiveMemoryWarning
