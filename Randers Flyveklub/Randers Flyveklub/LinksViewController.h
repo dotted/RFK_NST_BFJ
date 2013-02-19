@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  LinksViewController.h
 //  Randers Flyveklub
 //
 //  Created by Mercantec on 2/19/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface LinksViewController : UITableViewController
 
 @end

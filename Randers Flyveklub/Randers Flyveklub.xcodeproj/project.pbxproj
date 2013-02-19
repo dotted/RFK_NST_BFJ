@@ -18,10 +18,8 @@
 		350CEF8D16D39C2600329D5C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 350CEF8C16D39C2600329D5C /* Default-568h@2x.png */; };
 		350CEF9016D39C2600329D5C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 350CEF8E16D39C2600329D5C /* MainStoryboard_iPhone.storyboard */; };
 		350CEF9316D39C2600329D5C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 350CEF9116D39C2600329D5C /* MainStoryboard_iPad.storyboard */; };
-		350CEF9616D39C2600329D5C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 350CEF9516D39C2600329D5C /* FirstViewController.m */; };
 		350CEF9816D39C2600329D5C /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 350CEF9716D39C2600329D5C /* first.png */; };
 		350CEF9A16D39C2600329D5C /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 350CEF9916D39C2600329D5C /* first@2x.png */; };
-		350CEF9D16D39C2600329D5C /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 350CEF9C16D39C2600329D5C /* SecondViewController.m */; };
 		350CEF9F16D39C2600329D5C /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 350CEF9E16D39C2600329D5C /* second.png */; };
 		350CEFA116D39C2600329D5C /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 350CEFA016D39C2600329D5C /* second@2x.png */; };
 		350CEFA916D39C2600329D5C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350CEFA816D39C2600329D5C /* SenTestingKit.framework */; };
@@ -29,6 +27,11 @@
 		350CEFAB16D39C2600329D5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350CEF7816D39C2600329D5C /* Foundation.framework */; };
 		350CEFB316D39C2600329D5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 350CEFB116D39C2600329D5C /* InfoPlist.strings */; };
 		350CEFB616D39C2600329D5C /* Randers_FlyveklubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 350CEFB516D39C2600329D5C /* Randers_FlyveklubTests.m */; };
+		358269D916D3B32400C2F28E /* LinksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269D816D3B32400C2F28E /* LinksViewController.m */; };
+		358269DC16D3B35000C2F28E /* WeatherStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269DB16D3B35000C2F28E /* WeatherStationViewController.m */; };
+		358269DF16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269DE16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.m */; };
+		358269E216D3B3A300C2F28E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269E116D3B3A300C2F28E /* MapViewController.m */; };
+		358269E516D3B3C700C2F28E /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269E416D3B3C700C2F28E /* ContactsViewController.m */; };
 		35AFE13E16D3A4CD00FA4AE8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AFE13D16D3A4CC00FA4AE8 /* MapKit.framework */; };
 		35AFE14016D3A54B00FA4AE8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AFE13F16D3A54B00FA4AE8 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
@@ -59,12 +62,8 @@
 		350CEF8C16D39C2600329D5C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		350CEF8F16D39C2600329D5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		350CEF9216D39C2600329D5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		350CEF9416D39C2600329D5C /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		350CEF9516D39C2600329D5C /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		350CEF9716D39C2600329D5C /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		350CEF9916D39C2600329D5C /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		350CEF9B16D39C2600329D5C /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		350CEF9C16D39C2600329D5C /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		350CEF9E16D39C2600329D5C /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		350CEFA016D39C2600329D5C /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		350CEFA716D39C2600329D5C /* Randers FlyveklubTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Randers FlyveklubTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +72,16 @@
 		350CEFB216D39C2600329D5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		350CEFB416D39C2600329D5C /* Randers_FlyveklubTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Randers_FlyveklubTests.h; sourceTree = "<group>"; };
 		350CEFB516D39C2600329D5C /* Randers_FlyveklubTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Randers_FlyveklubTests.m; sourceTree = "<group>"; };
+		358269D716D3B32400C2F28E /* LinksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinksViewController.h; sourceTree = "<group>"; };
+		358269D816D3B32400C2F28E /* LinksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinksViewController.m; sourceTree = "<group>"; };
+		358269DA16D3B35000C2F28E /* WeatherStationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherStationViewController.h; sourceTree = "<group>"; };
+		358269DB16D3B35000C2F28E /* WeatherStationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherStationViewController.m; sourceTree = "<group>"; };
+		358269DD16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AircraftPerformancePlanningViewController.h; sourceTree = "<group>"; };
+		358269DE16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AircraftPerformancePlanningViewController.m; sourceTree = "<group>"; };
+		358269E016D3B3A300C2F28E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		358269E116D3B3A300C2F28E /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		358269E316D3B3C700C2F28E /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		358269E416D3B3C700C2F28E /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
 		35AFE13D16D3A4CC00FA4AE8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		35AFE13F16D3A54B00FA4AE8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -192,8 +201,8 @@
 		358269D316D3B22E00C2F28E /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				350CEF9B16D39C2600329D5C /* SecondViewController.h */,
-				350CEF9C16D39C2600329D5C /* SecondViewController.m */,
+				358269E316D3B3C700C2F28E /* ContactsViewController.h */,
+				358269E416D3B3C700C2F28E /* ContactsViewController.m */,
 			);
 			name = Contacts;
 			sourceTree = "<group>";
@@ -201,6 +210,8 @@
 		358269D416D3B23E00C2F28E /* Links */ = {
 			isa = PBXGroup;
 			children = (
+				358269D716D3B32400C2F28E /* LinksViewController.h */,
+				358269D816D3B32400C2F28E /* LinksViewController.m */,
 			);
 			name = Links;
 			sourceTree = "<group>";
@@ -208,6 +219,8 @@
 		358269D516D3B24400C2F28E /* Weather Station */ = {
 			isa = PBXGroup;
 			children = (
+				358269DA16D3B35000C2F28E /* WeatherStationViewController.h */,
+				358269DB16D3B35000C2F28E /* WeatherStationViewController.m */,
 			);
 			name = "Weather Station";
 			sourceTree = "<group>";
@@ -215,6 +228,8 @@
 		358269D616D3B24E00C2F28E /* Aircraft Performance Planning */ = {
 			isa = PBXGroup;
 			children = (
+				358269DD16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.h */,
+				358269DE16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.m */,
 			);
 			name = "Aircraft Performance Planning";
 			sourceTree = "<group>";
@@ -222,8 +237,8 @@
 		35AFE14116D3A74B00FA4AE8 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				350CEF9416D39C2600329D5C /* FirstViewController.h */,
-				350CEF9516D39C2600329D5C /* FirstViewController.m */,
+				358269E016D3B3A300C2F28E /* MapViewController.h */,
+				358269E116D3B3A300C2F28E /* MapViewController.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -345,8 +360,11 @@
 			files = (
 				350CEF8316D39C2600329D5C /* main.m in Sources */,
 				350CEF8716D39C2600329D5C /* AppDelegate.m in Sources */,
-				350CEF9616D39C2600329D5C /* FirstViewController.m in Sources */,
-				350CEF9D16D39C2600329D5C /* SecondViewController.m in Sources */,
+				358269D916D3B32400C2F28E /* LinksViewController.m in Sources */,
+				358269DC16D3B35000C2F28E /* WeatherStationViewController.m in Sources */,
+				358269DF16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.m in Sources */,
+				358269E216D3B3A300C2F28E /* MapViewController.m in Sources */,
+				358269E516D3B3C700C2F28E /* ContactsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--First View Controller - Map-->
+        <!--Map View Controller - Map-->
         <scene sceneID="11">
             <objects>
-                <viewController id="2" customClass="FirstViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17">
                         <rect key="frame" x="0.0" y="20" width="768" height="955"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,10 +34,10 @@
             </objects>
             <point key="canvasLocation" x="3005" y="-1596"/>
         </scene>
-        <!--Table View Controller - Contacts-->
+        <!--Contacts View Controller - Contacts-->
         <scene sceneID="7Do-KO-Xi8">
             <objects>
-                <tableViewController id="2XU-xh-4E0" sceneMemberID="viewController">
+                <tableViewController id="2XU-xh-4E0" customClass="ContactsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="FgW-zF-Bna">
                         <rect key="frame" x="0.0" y="20" width="768" height="955"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="3011" y="-483"/>
         </scene>
-        <!--Table View Controller - Weather station-->
+        <!--Weather Station View Controller - Weather station-->
         <scene sceneID="2yl-gU-IkD">
             <objects>
-                <tableViewController id="c6S-cp-G60" sceneMemberID="viewController">
+                <tableViewController id="c6S-cp-G60" customClass="WeatherStationViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Q2O-0R-5Sf">
                         <rect key="frame" x="0.0" y="20" width="768" height="955"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="3011" y="1829"/>
         </scene>
-        <!--Table View Controller - Aircraft Performance Planning-->
+        <!--Aircraft Performance Planning View Controller - Aircraft Performance Planning-->
         <scene sceneID="dpO-7x-4JF">
             <objects>
-                <tableViewController id="eoe-28-pUg" sceneMemberID="viewController">
+                <tableViewController id="eoe-28-pUg" customClass="AircraftPerformancePlanningViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="LwK-wL-DeG">
                         <rect key="frame" x="0.0" y="20" width="768" height="955"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -171,10 +171,10 @@
             </objects>
             <point key="canvasLocation" x="1927" y="689"/>
         </scene>
-        <!--Table View Controller - Links-->
+        <!--Links View Controller - Links-->
         <scene sceneID="2RJ-R5-4W7">
             <objects>
-                <tableViewController id="LuR-TE-4Gp" sceneMemberID="viewController">
+                <tableViewController id="LuR-TE-4Gp" customClass="LinksViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Npg-pw-4dC">
                         <rect key="frame" x="0.0" y="20" width="768" height="955"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -206,11 +206,23 @@
         <image name="first" width="16" height="16"/>
     </resources>
     <classes>
-        <class className="FirstViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FirstViewController.h"/>
+        <class className="AircraftPerformancePlanningViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AircraftPerformancePlanningViewController.h"/>
+        </class>
+        <class className="ContactsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactsViewController.h"/>
+        </class>
+        <class className="LinksViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LinksViewController.h"/>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="WeatherStationViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WeatherStationViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
