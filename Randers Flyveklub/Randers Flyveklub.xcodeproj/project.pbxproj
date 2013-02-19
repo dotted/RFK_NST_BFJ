@@ -138,13 +138,15 @@
 		350CEF7C16D39C2600329D5C /* Randers Flyveklub */ = {
 			isa = PBXGroup;
 			children = (
+				358269D616D3B24E00C2F28E /* Aircraft Performance Planning */,
+				358269D516D3B24400C2F28E /* Weather Station */,
+				358269D416D3B23E00C2F28E /* Links */,
+				358269D316D3B22E00C2F28E /* Contacts */,
 				35AFE14116D3A74B00FA4AE8 /* Map */,
 				350CEF8516D39C2600329D5C /* AppDelegate.h */,
 				350CEF8616D39C2600329D5C /* AppDelegate.m */,
 				350CEF8E16D39C2600329D5C /* MainStoryboard_iPhone.storyboard */,
 				350CEF9116D39C2600329D5C /* MainStoryboard_iPad.storyboard */,
-				350CEF9B16D39C2600329D5C /* SecondViewController.h */,
-				350CEF9C16D39C2600329D5C /* SecondViewController.m */,
 				350CEF7D16D39C2600329D5C /* Supporting Files */,
 			);
 			path = "Randers Flyveklub";
@@ -185,6 +187,36 @@
 				350CEFB116D39C2600329D5C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		358269D316D3B22E00C2F28E /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				350CEF9B16D39C2600329D5C /* SecondViewController.h */,
+				350CEF9C16D39C2600329D5C /* SecondViewController.m */,
+			);
+			name = Contacts;
+			sourceTree = "<group>";
+		};
+		358269D416D3B23E00C2F28E /* Links */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Links;
+			sourceTree = "<group>";
+		};
+		358269D516D3B24400C2F28E /* Weather Station */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Weather Station";
+			sourceTree = "<group>";
+		};
+		358269D616D3B24E00C2F28E /* Aircraft Performance Planning */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Aircraft Performance Planning";
 			sourceTree = "<group>";
 		};
 		35AFE14116D3A74B00FA4AE8 /* Map */ = {
