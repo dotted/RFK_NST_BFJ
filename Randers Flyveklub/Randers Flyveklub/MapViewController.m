@@ -86,20 +86,7 @@
     }
 }
 
-- (void) saveData:(id)sender
-{
-    sqlite3_stmt *statement;
-    const char *dbpath = [_dbPath UTF8String];
-    
-    if (sqlite3_open(dbpath, &_dbHandler) == SQLITE_OK)
-    {
-        NSString *insertSQL = [NSString stringWithFormat:
-                               @"INSERT INTO CONTACTS (name, address, phone) VALUES (\"%@\", \"%@\", \"%@\")", self.name.text, self.address.text, self.phone.text];
-        
-        const char * insert_stmt = [insertSQL UTF8String];
-        sqlite3_prepare(<#sqlite3 *db#>, <#const char *zSql#>, <#int nByte#>, <#sqlite3_stmt **ppStmt#>, <#const char **pzTail#>)
-    }
-}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
