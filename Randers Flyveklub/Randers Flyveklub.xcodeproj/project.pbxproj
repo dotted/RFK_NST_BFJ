@@ -32,6 +32,7 @@
 		358269DF16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269DE16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.m */; };
 		358269E216D3B3A300C2F28E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269E116D3B3A300C2F28E /* MapViewController.m */; };
 		358269E516D3B3C700C2F28E /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269E416D3B3C700C2F28E /* ContactsViewController.m */; };
+		358269E716D4C3F200C2F28E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 358269E616D4C3F200C2F28E /* libsqlite3.dylib */; };
 		35AFE13E16D3A4CD00FA4AE8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AFE13D16D3A4CC00FA4AE8 /* MapKit.framework */; };
 		35AFE14016D3A54B00FA4AE8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AFE13F16D3A54B00FA4AE8 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,7 @@
 		358269E116D3B3A300C2F28E /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		358269E316D3B3C700C2F28E /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
 		358269E416D3B3C700C2F28E /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		358269E616D4C3F200C2F28E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		35AFE13D16D3A4CC00FA4AE8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		35AFE13F16D3A54B00FA4AE8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -91,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				358269E716D4C3F200C2F28E /* libsqlite3.dylib in Frameworks */,
 				35AFE14016D3A54B00FA4AE8 /* CoreLocation.framework in Frameworks */,
 				35AFE13E16D3A4CD00FA4AE8 /* MapKit.framework in Frameworks */,
 				350CEF7716D39C2600329D5C /* UIKit.framework in Frameworks */,
@@ -115,6 +118,7 @@
 		350CEF6A16D39C2600329D5C = {
 			isa = PBXGroup;
 			children = (
+				358269E616D4C3F200C2F28E /* libsqlite3.dylib */,
 				350CEF7C16D39C2600329D5C /* Randers Flyveklub */,
 				350CEFAE16D39C2600329D5C /* Randers FlyveklubTests */,
 				350CEF7516D39C2600329D5C /* Frameworks */,
