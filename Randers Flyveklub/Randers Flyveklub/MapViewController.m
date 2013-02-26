@@ -32,6 +32,7 @@ NSMutableDictionary *coordinates;
 
 NSString *selectedPin;
 NSMutableArray *airfieldList;
+NSMutableArray *existingIcao;
 
 double centerLat;
 double centerLong;
@@ -88,11 +89,22 @@ bool firstLoad = true;
 
 -(void)loadMapPins
 {
-    NSLog(@"Removing Pins");
-    [self.mapView removeAnnotations:self.mapView.annotations];
-    NSLog(@"Done Removing Pins");
+    existingIcao = [[NSMutableArray alloc] init];
+    int counter = 0;
+    //[self.mapView removeAnnotations:self.mapView.annotations];
+    NSLog(@"Drawing Starts");
+    NSArray *existingPins = mapView.annotations;
+    for (id annotation in existingPins) {
+        id<MKAnnotation> ann = annotation;
+        //NSLog(@"%@", ann.subtitle);
+        [existingIcao addObject:ann.subtitle];
+    }
+
     for (Airfield *airfield in airfieldList)
     {
+        if ([existingIcao containsObject:airfield.icao]) {
+            continue;
+        }
         CLLocationCoordinate2D airfieldCoords;
         airfieldCoords.latitude = airfield.lat;
         airfieldCoords.longitude = airfield.lng;
@@ -101,7 +113,10 @@ bool firstLoad = true;
         [myAnnotation setTitle:airfield.name];
         [myAnnotation setSubtitle:airfield.icao];
         [self.mapView addAnnotation:myAnnotation];
+        //NSLog(@"Counter: %d", counter++);
     }
+    NSLog(@"Existing pins: %d", [existingPins count]);
+    NSLog(@"Drawing done");
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
@@ -151,8 +166,8 @@ bool firstLoad = true;
         NSLog(@"Center cordinates: Latitude: %f, Longitude: %f", region.center.latitude, region.center.longitude);
         NSLog(@"Span: Latitude: %f, Longitude: %f", region.span.latitudeDelta, region.span.longitudeDelta);
         coordinates = [self getCurrentMinMaxFromRegion:region];
+        [airfieldList removeAllObjects];
         airfieldList = [self.dcDelegateMap getVisible:self FromCoordinates:coordinates];
-        //airfieldList = [self.dcDelegateMap getAll:self];
         NSLog(@"Log 7");
         [self loadMapPins];
     }
@@ -168,10 +183,10 @@ bool firstLoad = true;
     spanLat = region.span.latitudeDelta;
     spanLong = region.span.longitudeDelta;
     
-    coordinates[@"minLong"] = [NSNumber numberWithDouble:centerLong - (spanLong / 2)];
-    coordinates[@"minLat"] = [NSNumber numberWithDouble:centerLat - (spanLat / 2)];
-    coordinates[@"maxLong"] = [NSNumber numberWithDouble:centerLong + (spanLong / 2)];
-    coordinates[@"maxLat"] = [NSNumber numberWithDouble:centerLat + (spanLat / 2)];
+    coordinates[@"minLong"] = [NSNumber numberWithDouble:centerLong - (spanLong / 1.8)];
+    coordinates[@"minLat"] = [NSNumber numberWithDouble:centerLat - (spanLat / 1.9)];
+    coordinates[@"maxLong"] = [NSNumber numberWithDouble:centerLong + (spanLong / 1.8)];
+    coordinates[@"maxLat"] = [NSNumber numberWithDouble:centerLat + (spanLat / 1.8)];
     return coordinates;
 }
 
@@ -200,7 +215,7 @@ bool firstLoad = true;
 
 -(void)loadWeatherInformation:(NSDictionary *)dict
 {
-    NSLog(@"%@", dict);
+    //NSLog(@"%@", dict);
     if ([dict objectForKey:@"temperature"])
         temperatureText.text = [NSString stringWithFormat:@"%@°C",dict[@"temperature"]];
     if ([dict objectForKey:@"humidity"])

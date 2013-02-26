@@ -129,6 +129,8 @@
 // Return array with airfield objects, selected according to SQL statement
 -(NSMutableArray *) getVisible:(MapViewController *)controller FromCoordinates:(NSDictionary *)coordinates
 {
+    
+    [data removeAllObjects];
     NSNumber *minLong = coordinates[@"minLong"];
     NSNumber *minLat = coordinates[@"minLat"];
     NSNumber *maxLong = coordinates[@"maxLong"];
