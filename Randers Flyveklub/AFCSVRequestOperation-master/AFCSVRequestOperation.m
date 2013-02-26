@@ -85,7 +85,7 @@ static dispatch_queue_t csv_request_operation_processing_queue() {
 
 + (NSSet *)acceptableContentTypes
 {
-    return [NSSet setWithObjects:@"text/csv", nil];
+    return [NSSet setWithObjects:@"text/csv", @"text/plain", nil];
 }
 
 + (BOOL)canProcessRequest:(NSURLRequest *)request {
