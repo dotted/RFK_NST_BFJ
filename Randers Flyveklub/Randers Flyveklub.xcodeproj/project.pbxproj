@@ -27,7 +27,7 @@
 		350CEFAB16D39C2600329D5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350CEF7816D39C2600329D5C /* Foundation.framework */; };
 		350CEFB316D39C2600329D5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 350CEFB116D39C2600329D5C /* InfoPlist.strings */; };
 		350CEFB616D39C2600329D5C /* Randers_FlyveklubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 350CEFB516D39C2600329D5C /* Randers_FlyveklubTests.m */; };
-		358269D916D3B32400C2F28E /* LinksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269D816D3B32400C2F28E /* LinksViewController.m */; };
+		357F282016DCD61C001697EC /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357F281F16DCD61C001697EC /* WebViewController.m */; };
 		358269DC16D3B35000C2F28E /* WeatherStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269DB16D3B35000C2F28E /* WeatherStationViewController.m */; };
 		358269DF16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269DE16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.m */; };
 		358269E216D3B3A300C2F28E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269E116D3B3A300C2F28E /* MapViewController.m */; };
@@ -76,8 +76,8 @@
 		350CEFB216D39C2600329D5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		350CEFB416D39C2600329D5C /* Randers_FlyveklubTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Randers_FlyveklubTests.h; sourceTree = "<group>"; };
 		350CEFB516D39C2600329D5C /* Randers_FlyveklubTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Randers_FlyveklubTests.m; sourceTree = "<group>"; };
-		358269D716D3B32400C2F28E /* LinksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinksViewController.h; sourceTree = "<group>"; };
-		358269D816D3B32400C2F28E /* LinksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinksViewController.m; sourceTree = "<group>"; };
+		357F281E16DCD61C001697EC /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		357F281F16DCD61C001697EC /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		358269DA16D3B35000C2F28E /* WeatherStationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherStationViewController.h; sourceTree = "<group>"; };
 		358269DB16D3B35000C2F28E /* WeatherStationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherStationViewController.m; sourceTree = "<group>"; };
 		358269DD16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AircraftPerformancePlanningViewController.h; sourceTree = "<group>"; };
@@ -227,8 +227,8 @@
 		358269D416D3B23E00C2F28E /* Links */ = {
 			isa = PBXGroup;
 			children = (
-				358269D716D3B32400C2F28E /* LinksViewController.h */,
-				358269D816D3B32400C2F28E /* LinksViewController.m */,
+				357F281E16DCD61C001697EC /* WebViewController.h */,
+				357F281F16DCD61C001697EC /* WebViewController.m */,
 			);
 			name = Links;
 			sourceTree = "<group>";
@@ -380,13 +380,13 @@
 			files = (
 				350CEF8316D39C2600329D5C /* main.m in Sources */,
 				350CEF8716D39C2600329D5C /* AppDelegate.m in Sources */,
-				358269D916D3B32400C2F28E /* LinksViewController.m in Sources */,
 				358269DC16D3B35000C2F28E /* WeatherStationViewController.m in Sources */,
 				358269DF16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.m in Sources */,
 				358269E216D3B3A300C2F28E /* MapViewController.m in Sources */,
 				358269E516D3B3C700C2F28E /* ContactsViewController.m in Sources */,
 				3586375B16D4F0EB007C5E40 /* Airfield.m in Sources */,
 				3586375E16D4F4C6007C5E40 /* DBDataController.m in Sources */,
+				357F282016DCD61C001697EC /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

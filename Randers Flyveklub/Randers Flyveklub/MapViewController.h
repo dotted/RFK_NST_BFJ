@@ -18,6 +18,7 @@
 @property (nonatomic, strong) id <DataControllerDelegate> dcDelegateMap;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) NSString *dbPath;
+
 @property (weak, nonatomic) IBOutlet UIView *informationBox;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelICAO;

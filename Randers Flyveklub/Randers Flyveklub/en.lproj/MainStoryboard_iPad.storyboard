@@ -245,6 +245,52 @@
             </objects>
             <point key="canvasLocation" x="3011" y="-483"/>
         </scene>
+        <!--Web View Controller - Item-->
+        <scene sceneID="jeU-Zi-rmr">
+            <objects>
+                <viewController id="QGR-lY-e2A" customClass="WebViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ett-tI-Dac">
+                        <rect key="frame" x="0.0" y="20" width="768" height="955"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C57-hd-ydC">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="914" id="Ouo-Aq-FIL"/>
+                                </constraints>
+                            </webView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="alq-6q-Qpx">
+                                <segments>
+                                    <segment title="DMI"/>
+                                    <segment title="Airfields.dk"/>
+                                    <segment title="Randers Flyve Klub"/>
+                                    <segment title="RFK Webcam"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeWebSite:" destination="QGR-lY-e2A" eventType="valueChanged" id="OOc-Cb-rVv"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="alq-6q-Qpx" firstAttribute="top" secondItem="Ett-tI-Dac" secondAttribute="top" type="default" id="0Pg-v5-aeU"/>
+                            <constraint firstItem="C57-hd-ydC" firstAttribute="leading" secondItem="Ett-tI-Dac" secondAttribute="leading" type="default" id="AWT-vd-rgP"/>
+                            <constraint firstItem="alq-6q-Qpx" firstAttribute="leading" secondItem="Ett-tI-Dac" secondAttribute="leading" type="default" id="JHK-bc-yJS"/>
+                            <constraint firstItem="C57-hd-ydC" firstAttribute="bottom" secondItem="Ett-tI-Dac" secondAttribute="bottom" type="default" id="s5o-O2-hwl"/>
+                            <constraint firstItem="alq-6q-Qpx" firstAttribute="trailing" secondItem="Ett-tI-Dac" secondAttribute="trailing" type="default" id="xmY-gh-i41"/>
+                            <constraint firstItem="C57-hd-ydC" firstAttribute="trailing" secondItem="Ett-tI-Dac" secondAttribute="trailing" type="default" id="yG6-SM-j44"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="2RI-NR-ylK"/>
+                    <connections>
+                        <outlet property="myWebView" destination="C57-hd-ydC" id="Tfr-FU-8z5"/>
+                        <outlet property="segment" destination="alq-6q-Qpx" id="aso-1i-wWv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L1X-u1-Jm7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3011" y="651"/>
+        </scene>
         <!--Weather Station View Controller - Weather station-->
         <scene sceneID="2yl-gU-IkD">
             <objects>
@@ -273,7 +319,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dza-Me-cuh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3011" y="1829"/>
+            <point key="canvasLocation" x="3006" y="1835"/>
         </scene>
         <!--Aircraft Performance Planning View Controller - Aircraft Performance Planning-->
         <scene sceneID="dpO-7x-4JF">
@@ -305,31 +351,6 @@
             </objects>
             <point key="canvasLocation" x="3011" y="3017"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="SWA-O6-5qa">
-            <objects>
-                <viewController id="HEK-kU-oxX" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mo1-c2-KvC">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ub4-4d-Ga1">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Ub4-4d-Ga1" firstAttribute="trailing" secondItem="mo1-c2-KvC" secondAttribute="trailing" type="default" id="2t2-lU-qLb"/>
-                            <constraint firstItem="Ub4-4d-Ga1" firstAttribute="leading" secondItem="mo1-c2-KvC" secondAttribute="leading" type="default" id="6u3-h8-1T5"/>
-                            <constraint firstItem="Ub4-4d-Ga1" firstAttribute="bottom" secondItem="mo1-c2-KvC" secondAttribute="bottom" type="default" id="Bei-oM-PRO"/>
-                            <constraint firstItem="Ub4-4d-Ga1" firstAttribute="top" secondItem="mo1-c2-KvC" secondAttribute="top" type="default" id="dtD-QR-v0Y"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KvG-z4-wyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3974" y="684"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
             <objects>
@@ -343,44 +364,14 @@
                     <connections>
                         <segue destination="2" kind="relationship" relationship="viewControllers" id="27"/>
                         <segue destination="2XU-xh-4E0" kind="relationship" relationship="viewControllers" id="aeW-ZU-0Ae"/>
-                        <segue destination="LuR-TE-4Gp" kind="relationship" relationship="viewControllers" id="kN8-1Q-m3l"/>
                         <segue destination="c6S-cp-G60" kind="relationship" relationship="viewControllers" id="Epz-fb-Gb7"/>
                         <segue destination="eoe-28-pUg" kind="relationship" relationship="viewControllers" id="33R-Je-IIc"/>
+                        <segue destination="QGR-lY-e2A" kind="relationship" relationship="viewControllers" id="tBY-j1-WHo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1927" y="689"/>
-        </scene>
-        <!--Links View Controller - Links-->
-        <scene sceneID="2RJ-R5-4W7">
-            <objects>
-                <tableViewController id="LuR-TE-4Gp" customClass="LinksViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Npg-pw-4dC">
-                        <rect key="frame" x="0.0" y="20" width="768" height="955"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cIZ-hL-hYj">
-                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="LuR-TE-4Gp" id="Y59-ME-7YA"/>
-                            <outlet property="delegate" destination="LuR-TE-4Gp" id="Sc7-Df-8Rw"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Links" id="vyJ-a1-Cw6"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Iv-d0-pyW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2998" y="689"/>
         </scene>
     </scenes>
     <resources>
@@ -392,9 +383,6 @@
         </class>
         <class className="ContactsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactsViewController.h"/>
-        </class>
-        <class className="LinksViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LinksViewController.h"/>
         </class>
         <class className="MapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
@@ -416,6 +404,14 @@
         </class>
         <class className="WeatherStationViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WeatherStationViewController.h"/>
+        </class>
+        <class className="WebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="changeWebSite:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="myWebView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="segment" candidateClass="UISegmentedControl"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

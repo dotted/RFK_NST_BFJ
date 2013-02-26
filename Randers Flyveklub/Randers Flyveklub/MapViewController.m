@@ -14,6 +14,7 @@
 @end
 
 @implementation MapViewController
+
 @synthesize mapView;
 @synthesize dcDelegateMap;
 @synthesize airfieldText;
@@ -47,28 +48,19 @@ bool firstLoad = true;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        NSLog(@"First map load");
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
-    
 	// Do any additional setup after loading the view.
     /*self.view.backgroundColor = [UIColor whiteColor];
     */
-    NSLog(@"Log 2");
     [super viewDidLoad];
-    NSLog(@"Log 3");
     self.dcDelegateMap = [[DBDataController alloc] init];
-    NSLog(@"Log 4");
     mapView.delegate = self;
-    NSLog(@"Log 5");
     [self loadMap];
-    NSLog(@"Log 6");
-
-    
  }
 
 -(void)loadMap {
@@ -102,7 +94,8 @@ bool firstLoad = true;
 
     for (Airfield *airfield in airfieldList)
     {
-        if ([existingIcao containsObject:airfield.icao]) {
+        if ([existingIcao containsObject:airfield.icao])
+        {
             continue;
         }
         CLLocationCoordinate2D airfieldCoords;

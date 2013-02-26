@@ -2,7 +2,7 @@
 //  LinksViewController.m
 //  Randers Flyveklub
 //
-//  Created by Mercantec on 2/19/13.
+//  Created by Mercantec on 2/26/13.
 //  Copyright (c) 2013 Nestea & Bo Fucking Jensen. All rights reserved.
 //
 
