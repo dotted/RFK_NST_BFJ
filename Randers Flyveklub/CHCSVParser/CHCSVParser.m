@@ -29,6 +29,7 @@ NSString *const CHCSVErrorDomain = @"com.davedelong.csv";
 
 #define CHUNK_SIZE 512
 #define DOUBLE_QUOTE '"'
+#define SPACE ' '
 #define COMMA ','
 #define OCTOTHORPE '#'
 #define BACKSLASH '\\'
@@ -73,13 +74,13 @@ NSString *const CHCSVErrorDomain = @"com.davedelong.csv";
 - (id)initWithCSVString:(NSString *)csv {
     NSStringEncoding encoding = [csv fastestEncoding];
     NSInputStream *stream = [NSInputStream inputStreamWithData:[csv dataUsingEncoding:encoding]];
-    return [self initWithInputStream:stream usedEncoding:&encoding delimiter:COMMA];
+    return [self initWithInputStream:stream usedEncoding:&encoding delimiter:SPACE];
 }
 
 - (id)initWithContentsOfCSVFile:(NSString *)csvFilePath {
     NSInputStream *stream = [NSInputStream inputStreamWithFileAtPath:csvFilePath];
     NSStringEncoding encoding = 0;
-    return [self initWithInputStream:stream usedEncoding:&encoding delimiter:COMMA];
+    return [self initWithInputStream:stream usedEncoding:&encoding delimiter:SPACE];
 }
 
 - (id)initWithInputStream:(NSInputStream *)stream usedEncoding:(NSStringEncoding *)encoding delimiter:(unichar)delimiter {
@@ -534,7 +535,7 @@ NSString *const CHCSVErrorDomain = @"com.davedelong.csv";
 
 - (instancetype)initForWritingToCSVFile:(NSString *)path {
     NSOutputStream *stream = [NSOutputStream outputStreamToFileAtPath:path append:NO];
-    return [self initWithOutputStream:stream encoding:NSUTF8StringEncoding delimiter:COMMA];
+    return [self initWithOutputStream:stream encoding:NSUTF8StringEncoding delimiter:SPACE];
 }
 
 - (instancetype)initWithOutputStream:(NSOutputStream *)stream encoding:(NSStringEncoding)encoding delimiter:(unichar)delimiter {
@@ -722,7 +723,7 @@ NSString *const CHCSVErrorDomain = @"com.davedelong.csv";
 
 - (NSString *)CSVString {
     NSOutputStream *output = [NSOutputStream outputStreamToMemory];
-    CHCSVWriter *writer = [[CHCSVWriter alloc] initWithOutputStream:output encoding:NSUTF8StringEncoding delimiter:COMMA];
+    CHCSVWriter *writer = [[CHCSVWriter alloc] initWithOutputStream:output encoding:NSUTF8StringEncoding delimiter:SPACE];
     for (id object in self) {
         if ([object conformsToProtocol:@protocol(NSFastEnumeration)]) {
             [writer writeLineOfFields:object];
