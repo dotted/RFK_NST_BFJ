@@ -8,85 +8,122 @@
 
 #import "MapViewController.h"
 
+
 @interface MapViewController ()
 
 @end
 
 @implementation MapViewController
 @synthesize mapView;
+@synthesize dcDelegateMap;
+@synthesize airfieldText;
+@synthesize labelICAO;
+@synthesize temperatureText;
+@synthesize labelHumidity;
+@synthesize labelClouds;
+@synthesize labelWindDirection;
+@synthesize labelWindSpeed;
+@synthesize labelCountryCode;
+
+
+NSURLConnection *conn;
+NSMutableData *urlData;
+NSMutableDictionary *coordinates;
+
+NSString *selectedPin;
+NSMutableArray *airfieldList;
+
+double centerLat;
+double centerLong;
+double spanLat;
+double spanLong;
+
+bool firstLoad = true;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        NSLog(@"First map load");
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
+    /*self.view.backgroundColor = [UIColor whiteColor];
+    */
+    NSLog(@"Log 2");
+    [super viewDidLoad];
+    NSLog(@"Log 3");
+    self.dcDelegateMap = [[DBDataController alloc] init];
+    NSLog(@"Log 4");
+    mapView.delegate = self;
+    NSLog(@"Log 5");
+    [self loadMap];
+    NSLog(@"Log 6");
+
     
-    self.mapView = [[MKMapView alloc]
-                    initWithFrame:self.view.bounds];
+ }
+
+-(void)loadMap {
+    NSLog(@"Loading map");
+    self.mapView.mapType = MKMapTypeSatellite;
     
-    //self.mapView.mapType = MKMapTypeSatellite;
+    MKCoordinateRegion myregion;
+    myregion.center.latitude = 56.4667;
+    myregion.center.longitude = 10.05;
+    myregion.span.latitudeDelta = 3.765263;
+    myregion.span.longitudeDelta = 8.437499;
     
-    self.mapView.delegate = self;
-    
-    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    [self.view addSubview:self.mapView];
-    
-    CLLocationCoordinate2D coords;
-    coords.latitude = 56.4667;
-    coords.longitude = 10.05;
-    MKCoordinateRegion region;
-    //region.center = [mapView userLocation].location.coordinate;
-    region.center = coords;
-    region.span.latitudeDelta = 3.75;
-    region.span.longitudeDelta = 3.75;
-    [mapView setRegion:region animated:YES];
-    
-    NSString *docsDir;
-    NSArray *dirPaths;
-    
-    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-    
-    docsDir = dirPaths[0];
-    
-    _dbPath = [[NSString alloc]
-               initWithString: [docsDir stringByAppendingPathComponent:
-                                @"contacts.db"]];
-    
-    NSFileManager *fileMgr = [NSFileManager defaultManager];
-    
-    if ([fileMgr fileExistsAtPath: _dbPath] == NO)
+   // NSLog(@"%f %f %f %f", myregion.center.latitude, myregion.center.longitude, myregion.span.longitudeDelta, myregion.span.latitudeDelta);
+
+    [self.mapView setRegion:myregion animated:YES];
+    NSLog(@"Done loading map");
+}
+
+-(void)loadMapPins
+{
+    NSLog(@"Removing Pins");
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    NSLog(@"Done Removing Pins");
+    for (Airfield *airfield in airfieldList)
     {
-        const char *dbpath = [_dbPath UTF8String];
-        
-        if (sqlite3_open(dbpath, &_dbHandler) == SQLITE_OK) {
-            char *errMsg;
-            const char *sql_stmt =
-                "CREATE TABLE IF NOT EXISTS CONTACTS (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, ADDRESS TEXT, PHONE TEXT)";
-            
-            if (sqlite3_exec(_dbHandler, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK)
-            {
-                NSLog(@"Failed to create table");
-            }
-            sqlite3_close(_dbHandler);
-        }
-        else
-        {
-            NSLog(@"Failed to open/create database");
-        }
+        CLLocationCoordinate2D airfieldCoords;
+        airfieldCoords.latitude = airfield.lat;
+        airfieldCoords.longitude = airfield.lng;
+        MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc] init];
+        [myAnnotation setCoordinate:airfieldCoords];
+        [myAnnotation setTitle:airfield.name];
+        [myAnnotation setSubtitle:airfield.icao];
+        [self.mapView addAnnotation:myAnnotation];
     }
 }
 
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
+{
+    id<MKAnnotation> selectedAnnotation = [mapView selectedAnnotations][0];
 
+    view.pinColor = MKPinAnnotationColorPurple;
+    selectedPin = selectedAnnotation.title;
+    airfieldText.text = selectedPin;
+    labelICAO.text = selectedAnnotation.subtitle;
+    [self getIcaoWeather:selectedAnnotation.subtitle];
+
+    NSLog(@"Selecting pin: %@", selectedPin);
+}
+
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKPinAnnotationView *)view
+{
+    view.pinColor = MKPinAnnotationColorRed;    
+    NSLog(@"De-Selecting pin: %@", selectedPin);
+    [self clearWeatherInformation];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
@@ -100,7 +137,113 @@
 }
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
 {
+    //Load all Markers for airfields.
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    if (!firstLoad) {
+        NSLog(@"Region changed");
+        // Update markers on the map when the position changes... not implemented
+        MKCoordinateRegion region;
+        region.center = mapView.region.center;
+        region.span = mapView.region.span;
+        NSLog(@"Center cordinates: Latitude: %f, Longitude: %f", region.center.latitude, region.center.longitude);
+        NSLog(@"Span: Latitude: %f, Longitude: %f", region.span.latitudeDelta, region.span.longitudeDelta);
+        coordinates = [self getCurrentMinMaxFromRegion:region];
+        airfieldList = [self.dcDelegateMap getVisible:self FromCoordinates:coordinates];
+        //airfieldList = [self.dcDelegateMap getAll:self];
+        NSLog(@"Log 7");
+        [self loadMapPins];
+    }
+    firstLoad = false;
+}
+
+
+-(NSMutableDictionary *) getCurrentMinMaxFromRegion:(MKCoordinateRegion)region
+{
+    coordinates = [[NSMutableDictionary alloc] init];
+    centerLat = region.center.latitude;
+    centerLong = region.center.longitude;
+    spanLat = region.span.latitudeDelta;
+    spanLong = region.span.longitudeDelta;
     
+    coordinates[@"minLong"] = [NSNumber numberWithDouble:centerLong - (spanLong / 2)];
+    coordinates[@"minLat"] = [NSNumber numberWithDouble:centerLat - (spanLat / 2)];
+    coordinates[@"maxLong"] = [NSNumber numberWithDouble:centerLong + (spanLong / 2)];
+    coordinates[@"maxLat"] = [NSNumber numberWithDouble:centerLat + (spanLat / 2)];
+    return coordinates;
+}
+
+-(void)getIcaoWeather:(NSString *)icao
+{
+    NSString *icaoUrl = [NSString stringWithFormat:@"http://api.geonames.org/weatherIcaoJSON?formatted=true&ICAO=%@&username=nstios&style=full", icao];
+    NSLog(@"Requesting on URL: %@#", icaoUrl);
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:icaoUrl]];
+    conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+-(void)connection:(NSURLConnection *)conn didReceiveResponse:(NSURLResponse *)response
+{
+    urlData = [[NSMutableData alloc] init];
+}
+
+-(void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)data
+{
+    [urlData appendData:data];
+}
+
+-(void)connection:(NSURLConnection *)conn didFailWithError:(NSError *)error
+{
+    NSLog(@"Connection failed: %@", [error localizedDescription]);
+}
+
+-(void)loadWeatherInformation:(NSDictionary *)dict
+{
+    NSLog(@"%@", dict);
+    if ([dict objectForKey:@"temperature"])
+        temperatureText.text = [NSString stringWithFormat:@"%@°C",dict[@"temperature"]];
+    if ([dict objectForKey:@"humidity"])
+        labelHumidity.text = [NSString stringWithFormat:@"%@" , dict[@"humidity"]];
+    if ([dict objectForKey:@"clouds"])
+        labelClouds.text = dict[@"clouds"];
+    if ([dict objectForKey:@"windDirection"])
+        labelWindDirection.text = [NSString stringWithFormat:@"%@", dict[@"windDirection"]];
+    if ([dict objectForKey:@"windSpeed"])
+        labelWindSpeed.text = [NSString stringWithFormat:@"%@", dict[@"windSpeed"]];
+    if ([dict objectForKey:@"countryCode"])
+        labelCountryCode.text = dict[@"countryCode"];
+}
+
+-(void)clearWeatherInformation
+{
+    NSLog(@"Clearing weather information");
+    airfieldText.text = @"";
+    labelICAO.text = @"";
+    temperatureText.text = @"";
+    labelHumidity.text = @"";
+    labelClouds.text = @"";
+    labelWindDirection.text = @"";
+    labelWindSpeed.text = @"";
+    labelCountryCode.text = @"";
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSError *jsonParsingError = nil;
+    if (conn) {
+        id object = [NSJSONSerialization JSONObjectWithData:urlData options:0 error:&jsonParsingError];
+        
+        if (jsonParsingError)
+        {
+            NSLog(@"JSON ERROR: %@", [jsonParsingError localizedDescription]);
+        }
+        else
+        {
+            //NSLog(@"OBJECT TYPE: %@", [object class]);
+            [self loadWeatherInformation:object[@"weatherObservation"]];
+        }
+    }
 }
 
 @end
