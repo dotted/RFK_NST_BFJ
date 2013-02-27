@@ -25,22 +25,19 @@
 @synthesize labelWindDirection;
 @synthesize labelWindSpeed;
 @synthesize labelCountryCode;
-
+@synthesize switchStatus;
 
 NSURLConnection *conn;
 NSMutableData *urlData;
 
 NSString *selectedPin;
-NSMutableArray *existingIcao;
 NSThread* myThread;
 
 double centerLat;
 double centerLong;
 double spanLat;
 double spanLong;
-
-bool firstLoad = true;
-
+int i;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -75,6 +72,9 @@ bool firstLoad = true;
    // NSLog(@"%f %f %f %f", myregion.center.latitude, myregion.center.longitude, myregion.span.longitudeDelta, myregion.span.latitudeDelta);
 
     [self.mapView setRegion:myregion animated:YES];
+    myThread = [[NSThread alloc] initWithTarget:self selector:@selector(loadMapPins:) object:self.mapView];
+    [myThread start];
+//    [self loadMapPins:mapView];
     NSLog(@"Done loading map");
 }
 
@@ -89,26 +89,10 @@ bool firstLoad = true;
     NSLog(@"Span: Latitude: %f, Longitude: %f", region.span.latitudeDelta, region.span.longitudeDelta);
     NSDictionary *coordinates = [self getCurrentMinMaxFromRegion:region];
     NSLog(@"test %d", [coordinates count]);
-    NSArray *airfieldList = [self.dcDelegateMap getVisible:self FromCoordinates:coordinates];
+    NSArray *airfieldList = [self.dcDelegateMap getAll:self];
 
-    existingIcao = [[NSMutableArray alloc] init];
-    int counter = 0;
-    //[self.mapView removeAnnotations:self.mapView.annotations];
-    NSArray *existingPins = mapView.annotations;
-    NSLog(@"For Loop Start");
-    for (id annotation in existingPins) {
-        id<MKAnnotation> ann = annotation;
-//        NSLog(@"%@", ann.subtitle);
-        [existingIcao addObject:ann.subtitle];
-    }
-    NSLog(@"For Loop End");
-    NSLog(@"For Loop Start");
     for (Airfield *airfield in airfieldList)
     {
-        if ([existingIcao containsObject:airfield.icao])
-        {
-            continue;
-        }
         CLLocationCoordinate2D airfieldCoords;
         airfieldCoords.latitude = airfield.lat;
         airfieldCoords.longitude = airfield.lng;
@@ -117,13 +101,8 @@ bool firstLoad = true;
         [myAnnotation setTitle:airfield.name];
         [myAnnotation setSubtitle:airfield.icao];
         [myAnnotations addObject:myAnnotation];
-        //NSLog(@"Counter: %d", counter++);
     }
     [self.mapView addAnnotations:myAnnotations];
-    NSLog(@"For Loop End");
-    NSLog(@"Existing pins: %d", [existingPins count]);
-    NSLog(@"Drawing Starts");
-    NSLog(@"Drawing done");
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
@@ -164,12 +143,8 @@ bool firstLoad = true;
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    if (!firstLoad) {
-        NSLog(@"Region changed");
-        // Update markers on the map when the position changes... not implemented
-        [self loadMapPins:mapView];
-    }
-    firstLoad = false;
+    NSLog(@"Region changed");
+    // Update markers on the map when the position changes... not implemented
 }
 
 
@@ -259,4 +234,23 @@ bool firstLoad = true;
     }
 }
 
+- (IBAction)switchAction:(UISwitch *)sender
+{
+    NSArray *annotations = [self.mapView annotations];
+    for (i=0; i<[annotations count]; i++)
+    {
+        id<MKAnnotation> ann = [annotations objectAtIndex:i];
+        if (switchStatus.isOn)
+        {
+            [[mapView viewForAnnotation:ann] setHidden:NO];
+            //NSLog(@"Is On");
+        }
+        else if (!(switchStatus.isOn))
+        {
+            //NSLog(@"Is Off");
+            [[self.mapView viewForAnnotation:ann] setHidden:YES];
+        }
+        
+    }
+}
 @end

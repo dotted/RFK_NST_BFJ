@@ -12,7 +12,6 @@
 #import "DataControllerDelegate.h"
 #import "DBDataController.h"
 #import "Airfield.h"
-//#import <Foundation/NSThread.h>
 
 @interface MapViewController : UIViewController
 
@@ -22,6 +21,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *informationBox;
 //@property (strong, atomic) NSThread *myThread;
+- (IBAction)switchAction:(UISwitch *)sender;
+@property (strong, nonatomic) IBOutlet UISwitch *switchStatus;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelICAO;
 @property (weak, nonatomic) IBOutlet UILabel *airfieldText;
