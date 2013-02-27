@@ -123,8 +123,6 @@ bool firstLoad = true;
     NSLog(@"For Loop End");
     NSLog(@"Existing pins: %d", [existingPins count]);
     NSLog(@"Drawing Starts");
-//    myThread = [[NSThread alloc] initWithTarget:self.mapView selector:@selector(addAnnotations:) object:myAnnotations];
-//    [myThread start];
     NSLog(@"Drawing done");
 }
 

@@ -11,8 +11,10 @@
 @interface WebViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIWebView *myWebView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segment;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loadIndicator;
 
 
 - (IBAction)changeWebSite:(UISegmentedControl *)sender;
+- (IBAction)backBtn:(id)sender;
 
 @end

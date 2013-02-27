@@ -259,30 +259,47 @@
                                     <constraint firstAttribute="height" constant="914" id="Ouo-Aq-FIL"/>
                                 </constraints>
                             </webView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="alq-6q-Qpx">
-                                <segments>
-                                    <segment title="DMI"/>
-                                    <segment title="Airfields.dk"/>
-                                    <segment title="Randers Flyve Klub"/>
-                                    <segment title="RFK Webcam"/>
-                                </segments>
-                                <connections>
-                                    <action selector="changeWebSite:" destination="QGR-lY-e2A" eventType="valueChanged" id="OOc-Cb-rVv"/>
-                                </connections>
-                            </segmentedControl>
+                            <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="obA-2A-Clz">
+                                <items>
+                                    <navigationItem id="1CB-DK-SeV">
+                                        <nil key="title"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="JSk-eR-R7A">
+                                            <connections>
+                                                <action selector="backBtn:" destination="QGR-lY-e2A" id="oli-72-nfZ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" id="alq-6q-Qpx">
+                                            <rect key="frame" x="87" y="2" width="593" height="40"/>
+                                            <segments>
+                                                <segment title="DMI" width="107"/>
+                                                <segment title="Airfields.dk" width="118"/>
+                                                <segment title="Randers Flyve Klub" width="182"/>
+                                                <segment title="RFK Webcam" width="183"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="changeWebSite:" destination="QGR-lY-e2A" eventType="valueChanged" id="OOc-Cb-rVv"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="D9c-fY-YP8"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="alq-6q-Qpx" firstAttribute="top" secondItem="Ett-tI-Dac" secondAttribute="top" type="default" id="0Pg-v5-aeU"/>
+                            <constraint firstAttribute="trailing" secondItem="D9c-fY-YP8" secondAttribute="trailing" constant="32" id="404-gr-coD"/>
+                            <constraint firstItem="obA-2A-Clz" firstAttribute="trailing" secondItem="Ett-tI-Dac" secondAttribute="trailing" type="default" id="9rQ-7N-n0r"/>
                             <constraint firstItem="C57-hd-ydC" firstAttribute="leading" secondItem="Ett-tI-Dac" secondAttribute="leading" type="default" id="AWT-vd-rgP"/>
-                            <constraint firstItem="alq-6q-Qpx" firstAttribute="leading" secondItem="Ett-tI-Dac" secondAttribute="leading" type="default" id="JHK-bc-yJS"/>
-                            <constraint firstItem="C57-hd-ydC" firstAttribute="bottom" secondItem="Ett-tI-Dac" secondAttribute="bottom" type="default" id="s5o-O2-hwl"/>
-                            <constraint firstItem="alq-6q-Qpx" firstAttribute="trailing" secondItem="Ett-tI-Dac" secondAttribute="trailing" type="default" id="xmY-gh-i41"/>
+                            <constraint firstItem="obA-2A-Clz" firstAttribute="leading" secondItem="Ett-tI-Dac" secondAttribute="leading" type="default" id="K5r-0e-3YX"/>
+                            <constraint firstItem="C57-hd-ydC" firstAttribute="bottom" secondItem="Ett-tI-Dac" secondAttribute="bottom" type="default" id="W9e-KZ-d6x"/>
+                            <constraint firstItem="D9c-fY-YP8" firstAttribute="centerY" secondItem="obA-2A-Clz" secondAttribute="centerY" type="default" id="e6b-Re-412"/>
+                            <constraint firstItem="C57-hd-ydC" firstAttribute="top" secondItem="obA-2A-Clz" secondAttribute="bottom" type="default" id="kx7-8b-YMi"/>
                             <constraint firstItem="C57-hd-ydC" firstAttribute="trailing" secondItem="Ett-tI-Dac" secondAttribute="trailing" type="default" id="yG6-SM-j44"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="2RI-NR-ylK"/>
                     <connections>
+                        <outlet property="loadIndicator" destination="D9c-fY-YP8" id="YXq-Ht-h40"/>
                         <outlet property="myWebView" destination="C57-hd-ydC" id="Tfr-FU-8z5"/>
                         <outlet property="segment" destination="alq-6q-Qpx" id="aso-1i-wWv"/>
                     </connections>
@@ -377,43 +394,6 @@
     <resources>
         <image name="first" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="AircraftPerformancePlanningViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AircraftPerformancePlanningViewController.h"/>
-        </class>
-        <class className="ContactsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactsViewController.h"/>
-        </class>
-        <class className="MapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="airfieldText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="informationBox" candidateClass="UIView"/>
-                <relationship kind="outlet" name="labelClouds" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelCountryCode" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelHumidity" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelICAO" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelWindDirection" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelWindSpeed" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="temperatureText" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="WeatherStationViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WeatherStationViewController.h"/>
-        </class>
-        <class className="WebViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changeWebSite:" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="myWebView" candidateClass="UIWebView"/>
-                <relationship kind="outlet" name="segment" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

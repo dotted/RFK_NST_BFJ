@@ -16,6 +16,7 @@
 
 @synthesize myWebView;
 @synthesize segment;
+@synthesize loadIndicator;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,8 +29,11 @@
 
 - (void)viewDidLoad
 {
-//    [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.randersflyveklub.dk"]]];
+    [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.dmi.dk/"]]];
     [super viewDidLoad];
+    myWebView.delegate = self;
+    segment.selectedSegmentIndex = -1;
+    segment.momentary = YES;
 	// Do any additional setup after loading the view.
 }
 
@@ -58,4 +62,19 @@
         [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://embed.bambuser.com/broadcast/3390434"]]];
     }
 }
+
+- (IBAction)backBtn:(id)sender
+{
+    [myWebView goBack];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [loadIndicator stopAnimating];
+}
+-(void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [loadIndicator startAnimating];
+}
+
 @end
