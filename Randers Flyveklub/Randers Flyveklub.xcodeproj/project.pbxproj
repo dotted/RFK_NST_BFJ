@@ -38,6 +38,7 @@
 		355B5CF416DE55F40040D0E2 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B5CE616DE55F40040D0E2 /* AFXMLRequestOperation.m */; };
 		355B5CF516DE55F40040D0E2 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B5CE816DE55F40040D0E2 /* UIImageView+AFNetworking.m */; };
 		355B5CF616DE55F40040D0E2 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B5CEB16DE55F40040D0E2 /* CHCSVParser.m */; };
+		355B5CF916DE56C80040D0E2 /* WeatherStationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B5CF816DE56C80040D0E2 /* WeatherStationTableViewCell.m */; };
 		357F282016DCD61C001697EC /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357F281F16DCD61C001697EC /* WebViewController.m */; };
 		358269DC16D3B35000C2F28E /* WeatherStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269DB16D3B35000C2F28E /* WeatherStationViewController.m */; };
 		358269DF16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358269DE16D3B36B00C2F28E /* AircraftPerformancePlanningViewController.m */; };
@@ -110,6 +111,8 @@
 		355B5CE816DE55F40040D0E2 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		355B5CEA16DE55F40040D0E2 /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
 		355B5CEB16DE55F40040D0E2 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
+		355B5CF716DE56C80040D0E2 /* WeatherStationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherStationTableViewCell.h; sourceTree = "<group>"; };
+		355B5CF816DE56C80040D0E2 /* WeatherStationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherStationTableViewCell.m; sourceTree = "<group>"; };
 		357F281E16DCD61C001697EC /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		357F281F16DCD61C001697EC /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		358269DA16D3B35000C2F28E /* WeatherStationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherStationViewController.h; sourceTree = "<group>"; };
@@ -317,6 +320,8 @@
 		358269D516D3B24400C2F28E /* Weather Station */ = {
 			isa = PBXGroup;
 			children = (
+				355B5CF716DE56C80040D0E2 /* WeatherStationTableViewCell.h */,
+				355B5CF816DE56C80040D0E2 /* WeatherStationTableViewCell.m */,
 				358269DA16D3B35000C2F28E /* WeatherStationViewController.h */,
 				358269DB16D3B35000C2F28E /* WeatherStationViewController.m */,
 			);
@@ -479,6 +484,7 @@
 				355B5CF416DE55F40040D0E2 /* AFXMLRequestOperation.m in Sources */,
 				355B5CF516DE55F40040D0E2 /* UIImageView+AFNetworking.m in Sources */,
 				355B5CF616DE55F40040D0E2 /* CHCSVParser.m in Sources */,
+				355B5CF916DE56C80040D0E2 /* WeatherStationTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
