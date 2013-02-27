@@ -186,11 +186,11 @@
                         <constraints>
                             <constraint firstItem="20" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="21X-Fc-h5m"/>
                             <constraint firstAttribute="trailing" secondItem="LLA-Hj-Uup" secondAttribute="trailing" constant="460" id="CxY-hk-vZO"/>
-                            <constraint firstAttribute="bottom" secondItem="LLA-Hj-Uup" secondAttribute="bottom" constant="651" id="DIl-Zp-fan"/>
+                            <constraint firstItem="LLA-Hj-Uup" firstAttribute="top" secondItem="YrX-Jl-LNA" secondAttribute="top" type="default" id="FLk-AX-6Jl"/>
                             <constraint firstItem="YrX-Jl-LNA" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="JpG-fF-qZ6"/>
                             <constraint firstItem="YrX-Jl-LNA" firstAttribute="top" secondItem="20" secondAttribute="bottom" type="default" id="QNw-0s-tlu"/>
                             <constraint firstItem="YrX-Jl-LNA" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="V4o-65-ERF"/>
-                            <constraint firstItem="LLA-Hj-Uup" firstAttribute="top" secondItem="17" secondAttribute="top" constant="46" type="user" id="daE-I6-WiT"/>
+                            <constraint firstAttribute="bottom" secondItem="LLA-Hj-Uup" secondAttribute="bottom" constant="653" id="amh-wJ-wfF"/>
                             <constraint firstItem="YrX-Jl-LNA" firstAttribute="bottom" secondItem="17" secondAttribute="bottom" type="default" id="eHu-4W-j5N"/>
                             <constraint firstItem="LLA-Hj-Uup" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="htS-Kj-dqZ"/>
                             <constraint firstItem="20" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="i7B-V8-9lR"/>
@@ -394,6 +394,45 @@
     <resources>
         <image name="first" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="AircraftPerformancePlanningViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AircraftPerformancePlanningViewController.h"/>
+        </class>
+        <class className="ContactsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactsViewController.h"/>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="airfieldText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="informationBox" candidateClass="UIView"/>
+                <relationship kind="outlet" name="labelClouds" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelCountryCode" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelHumidity" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelICAO" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelWindDirection" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelWindSpeed" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="temperatureText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="WeatherStationViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WeatherStationViewController.h"/>
+        </class>
+        <class className="WebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backBtn:"/>
+                <relationship kind="action" name="changeWebSite:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="loadIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="myWebView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="segment" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
