@@ -197,7 +197,7 @@
                             <constraint firstItem="20" firstAttribute="top" secondItem="17" secondAttribute="top" type="default" id="s0h-3s-52U"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="first" id="7"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="first.png" id="7"/>
                     <connections>
                         <outlet property="airfieldText" destination="2xd-5h-GuJ" id="4am-4A-6dA"/>
                         <outlet property="informationBox" destination="LLA-Hj-Uup" id="fe5-e7-GOA"/>
@@ -239,13 +239,13 @@
                             <outlet property="delegate" destination="2XU-xh-4E0" id="5ph-La-uom"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Contacts" id="i3O-sZ-a7r"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="second.png" id="i3O-sZ-a7r"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F6B-Da-gaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3011" y="-483"/>
         </scene>
-        <!--Web View Controller - Item-->
+        <!--Web View Controller - Links-->
         <scene sceneID="jeU-Zi-rmr">
             <objects>
                 <viewController id="QGR-lY-e2A" customClass="WebViewController" sceneMemberID="viewController">
@@ -297,7 +297,7 @@
                             <constraint firstItem="C57-hd-ydC" firstAttribute="trailing" secondItem="Ett-tI-Dac" secondAttribute="trailing" type="default" id="yG6-SM-j44"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="2RI-NR-ylK"/>
+                    <tabBarItem key="tabBarItem" title="Links" image="first.png" id="2RI-NR-ylK"/>
                     <connections>
                         <outlet property="loadIndicator" destination="D9c-fY-YP8" id="YXq-Ht-h40"/>
                         <outlet property="myWebView" destination="C57-hd-ydC" id="Tfr-FU-8z5"/>
@@ -332,7 +332,7 @@
                             <outlet property="delegate" destination="c6S-cp-G60" id="Vq3-mS-Bff"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Weather station" id="y6U-0W-wk9"/>
+                    <tabBarItem key="tabBarItem" title="Weather station" image="first.png" id="y6U-0W-wk9"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dza-Me-cuh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -362,7 +362,7 @@
                             <outlet property="delegate" destination="eoe-28-pUg" id="xRD-Mb-ZUF"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Aircraft Performance Planning" id="jfI-XT-9md"/>
+                    <tabBarItem key="tabBarItem" title="Aircraft Performance Planning" image="second.png" id="jfI-XT-9md"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GWz-k8-Xd4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -392,7 +392,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="16" height="16"/>
+        <image name="first.png" width="30" height="30"/>
+        <image name="second.png" width="30" height="30"/>
     </resources>
     <classes>
         <class className="AircraftPerformancePlanningViewController" superclassName="UITableViewController">
