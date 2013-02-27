@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AFCSVRequestOperation.h"
 
 @interface WeatherStationViewController : UITableViewController
+
+@property (nonatomic, strong) NSMutableArray * clientRawData;
+@property (nonatomic, strong) NSMutableArray * descriptions;
 
 @end

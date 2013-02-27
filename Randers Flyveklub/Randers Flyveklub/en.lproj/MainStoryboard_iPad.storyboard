@@ -73,14 +73,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="eSO-Yk-kR3">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WeatherStationCell" id="eSO-Yk-kR3" customClass="WeatherStationTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3E-MG-p2V">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToA-w1-QFr">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="ToA-w1-QFr" firstAttribute="baseline" secondItem="C3E-MG-p2V" secondAttribute="baseline" type="default" id="EsS-Nd-mZn"/>
+                                    <constraint firstAttribute="trailing" secondItem="ToA-w1-QFr" secondAttribute="trailing" constant="20" type="default" id="HzM-2o-EtT"/>
+                                    <constraint firstItem="C3E-MG-p2V" firstAttribute="top" secondItem="eSO-Yk-kR3" secondAttribute="top" constant="11" id="UaX-yC-KwJ"/>
+                                    <constraint firstItem="C3E-MG-p2V" firstAttribute="leading" secondItem="eSO-Yk-kR3" secondAttribute="leading" constant="20" type="default" id="ohq-SC-sYt"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataLabel" destination="ToA-w1-QFr" id="skB-5a-AFN"/>
+                                    <outlet property="descriptionLabel" destination="C3E-MG-p2V" id="BP6-Kc-Oqh"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
