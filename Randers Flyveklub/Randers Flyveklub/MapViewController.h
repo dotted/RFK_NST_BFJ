@@ -12,14 +12,16 @@
 #import "DataControllerDelegate.h"
 #import "DBDataController.h"
 #import "Airfield.h"
+//#import <Foundation/NSThread.h>
 
 @interface MapViewController : UIViewController
 
-@property (nonatomic, strong) id <DataControllerDelegate> dcDelegateMap;
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (atomic, strong) id <DataControllerDelegate> dcDelegateMap;
+@property (strong, atomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) NSString *dbPath;
 
 @property (weak, nonatomic) IBOutlet UIView *informationBox;
+//@property (strong, atomic) NSThread *myThread;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelICAO;
 @property (weak, nonatomic) IBOutlet UILabel *airfieldText;

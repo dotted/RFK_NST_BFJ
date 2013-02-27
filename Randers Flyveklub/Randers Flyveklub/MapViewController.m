@@ -29,11 +29,10 @@
 
 NSURLConnection *conn;
 NSMutableData *urlData;
-NSMutableDictionary *coordinates;
 
 NSString *selectedPin;
-NSMutableArray *airfieldList;
 NSMutableArray *existingIcao;
+NSThread* myThread;
 
 double centerLat;
 double centerLong;
@@ -79,19 +78,31 @@ bool firstLoad = true;
     NSLog(@"Done loading map");
 }
 
--(void)loadMapPins
+-(void)loadMapPins:(MKMapView *)mapView
 {
+    NSMutableArray *myAnnotations = [[NSMutableArray alloc] init];
+
+    MKCoordinateRegion region;
+    region.center = mapView.region.center;
+    region.span = mapView.region.span;
+    NSLog(@"Center cordinates: Latitude: %f, Longitude: %f", region.center.latitude, region.center.longitude);
+    NSLog(@"Span: Latitude: %f, Longitude: %f", region.span.latitudeDelta, region.span.longitudeDelta);
+    NSDictionary *coordinates = [self getCurrentMinMaxFromRegion:region];
+    NSLog(@"test %d", [coordinates count]);
+    NSArray *airfieldList = [self.dcDelegateMap getVisible:self FromCoordinates:coordinates];
+
     existingIcao = [[NSMutableArray alloc] init];
     int counter = 0;
     //[self.mapView removeAnnotations:self.mapView.annotations];
-    NSLog(@"Drawing Starts");
     NSArray *existingPins = mapView.annotations;
+    NSLog(@"For Loop Start");
     for (id annotation in existingPins) {
         id<MKAnnotation> ann = annotation;
-        //NSLog(@"%@", ann.subtitle);
+//        NSLog(@"%@", ann.subtitle);
         [existingIcao addObject:ann.subtitle];
     }
-
+    NSLog(@"For Loop End");
+    NSLog(@"For Loop Start");
     for (Airfield *airfield in airfieldList)
     {
         if ([existingIcao containsObject:airfield.icao])
@@ -105,10 +116,15 @@ bool firstLoad = true;
         [myAnnotation setCoordinate:airfieldCoords];
         [myAnnotation setTitle:airfield.name];
         [myAnnotation setSubtitle:airfield.icao];
-        [self.mapView addAnnotation:myAnnotation];
+        [myAnnotations addObject:myAnnotation];
         //NSLog(@"Counter: %d", counter++);
     }
+    [self.mapView addAnnotations:myAnnotations];
+    NSLog(@"For Loop End");
     NSLog(@"Existing pins: %d", [existingPins count]);
+    NSLog(@"Drawing Starts");
+//    myThread = [[NSThread alloc] initWithTarget:self.mapView selector:@selector(addAnnotations:) object:myAnnotations];
+//    [myThread start];
     NSLog(@"Drawing done");
 }
 
@@ -153,16 +169,7 @@ bool firstLoad = true;
     if (!firstLoad) {
         NSLog(@"Region changed");
         // Update markers on the map when the position changes... not implemented
-        MKCoordinateRegion region;
-        region.center = mapView.region.center;
-        region.span = mapView.region.span;
-        NSLog(@"Center cordinates: Latitude: %f, Longitude: %f", region.center.latitude, region.center.longitude);
-        NSLog(@"Span: Latitude: %f, Longitude: %f", region.span.latitudeDelta, region.span.longitudeDelta);
-        coordinates = [self getCurrentMinMaxFromRegion:region];
-        [airfieldList removeAllObjects];
-        airfieldList = [self.dcDelegateMap getVisible:self FromCoordinates:coordinates];
-        NSLog(@"Log 7");
-        [self loadMapPins];
+        [self loadMapPins:mapView];
     }
     firstLoad = false;
 }
@@ -170,7 +177,7 @@ bool firstLoad = true;
 
 -(NSMutableDictionary *) getCurrentMinMaxFromRegion:(MKCoordinateRegion)region
 {
-    coordinates = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *coordinates = [[NSMutableDictionary alloc] init];
     centerLat = region.center.latitude;
     centerLong = region.center.longitude;
     spanLat = region.span.latitudeDelta;
