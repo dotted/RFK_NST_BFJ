@@ -60,7 +60,7 @@ int i;
  }
 
 -(void)loadMap {
-    NSLog(@"Loading map");
+    //NSLog(@"Loading map");
     self.mapView.mapType = MKMapTypeSatellite;
     
     MKCoordinateRegion myregion;
@@ -72,23 +72,18 @@ int i;
    // NSLog(@"%f %f %f %f", myregion.center.latitude, myregion.center.longitude, myregion.span.longitudeDelta, myregion.span.latitudeDelta);
 
     [self.mapView setRegion:myregion animated:YES];
-    myThread = [[NSThread alloc] initWithTarget:self selector:@selector(loadMapPins:) object:self.mapView];
+    myThread = [[NSThread alloc] initWithTarget:self selector:@selector(loadMapPins:) object:mapView];
     [myThread start];
+    
+
+    //[self loadMapPins:mapView];
 //    [self loadMapPins:mapView];
-    NSLog(@"Done loading map");
+    //NSLog(@"Done loading map");
 }
 
 -(void)loadMapPins:(MKMapView *)mapView
 {
     NSMutableArray *myAnnotations = [[NSMutableArray alloc] init];
-
-    MKCoordinateRegion region;
-    region.center = mapView.region.center;
-    region.span = mapView.region.span;
-    NSLog(@"Center cordinates: Latitude: %f, Longitude: %f", region.center.latitude, region.center.longitude);
-    NSLog(@"Span: Latitude: %f, Longitude: %f", region.span.latitudeDelta, region.span.longitudeDelta);
-    NSDictionary *coordinates = [self getCurrentMinMaxFromRegion:region];
-    NSLog(@"test %d", [coordinates count]);
     NSArray *airfieldList = [self.dcDelegateMap getAll:self];
 
     for (Airfield *airfield in airfieldList)
@@ -126,10 +121,6 @@ int i;
     [self clearWeatherInformation];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-    return YES;
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -143,24 +134,8 @@ int i;
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    NSLog(@"Region changed");
+    //NSLog(@"Region changed");
     // Update markers on the map when the position changes... not implemented
-}
-
-
--(NSMutableDictionary *) getCurrentMinMaxFromRegion:(MKCoordinateRegion)region
-{
-    NSMutableDictionary *coordinates = [[NSMutableDictionary alloc] init];
-    centerLat = region.center.latitude;
-    centerLong = region.center.longitude;
-    spanLat = region.span.latitudeDelta;
-    spanLong = region.span.longitudeDelta;
-    
-    coordinates[@"minLong"] = [NSNumber numberWithDouble:centerLong - (spanLong / 1.8)];
-    coordinates[@"minLat"] = [NSNumber numberWithDouble:centerLat - (spanLat / 1.9)];
-    coordinates[@"maxLong"] = [NSNumber numberWithDouble:centerLong + (spanLong / 1.8)];
-    coordinates[@"maxLat"] = [NSNumber numberWithDouble:centerLat + (spanLat / 1.8)];
-    return coordinates;
 }
 
 -(void)getIcaoWeather:(NSString *)icao

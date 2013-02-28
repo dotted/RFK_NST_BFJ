@@ -15,7 +15,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YrX-Jl-LNA"/>
                             <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLA-Hj-Uup">
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Airfield:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKc-JK-oRU" customClass="View">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Airfield:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKc-JK-oRU">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="8ZZ-ab-o7A"/>
                                             <constraint firstAttribute="width" constant="65" id="v51-nY-P2j"/>
@@ -418,11 +418,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="QGR-lY-e2A" kind="relationship" relationship="viewControllers" id="tBY-j1-WHo"/>
                         <segue destination="2" kind="relationship" relationship="viewControllers" id="27"/>
                         <segue destination="2XU-xh-4E0" kind="relationship" relationship="viewControllers" id="aeW-ZU-0Ae"/>
                         <segue destination="c6S-cp-G60" kind="relationship" relationship="viewControllers" id="Epz-fb-Gb7"/>
                         <segue destination="eoe-28-pUg" kind="relationship" relationship="viewControllers" id="33R-Je-IIc"/>
-                        <segue destination="QGR-lY-e2A" kind="relationship" relationship="viewControllers" id="tBY-j1-WHo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -434,6 +434,48 @@
         <image name="first.png" width="30" height="30"/>
         <image name="second.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="AircraftPerformancePlanningViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AircraftPerformancePlanningViewController.h"/>
+        </class>
+        <class className="ContactsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContactsViewController.h"/>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="switchAction:" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="informationBox" candidateClass="UIView"/>
+                <relationship kind="outlet" name="labelAirfield" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelClouds" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelCountryCode" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelHumidity" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelICAO" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelTemperature" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelWindDirection" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelWindSpeed" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="switchStatus" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="WeatherStationViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WeatherStationViewController.h"/>
+        </class>
+        <class className="WebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backBtn:"/>
+                <relationship kind="action" name="changeWebSite:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="labelErrorDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="loadIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="myWebView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="segment" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
