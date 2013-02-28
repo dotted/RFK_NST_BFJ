@@ -21,6 +21,8 @@
 @synthesize rain = _rain;
 @synthesize misc = _misc;
 
+@synthesize hasData = _hasData;
+
 @synthesize sections = _sections;
 
 - (void)getRandersWeather
@@ -204,9 +206,190 @@
         
         self.sections = [[NSMutableArray alloc] initWithObjects:self.time, self.wind, self.temperature, self.rain, self.misc, nil];
         
+        self.hasData = YES;
+        // Load the data from the properties into the view
         [self.tableView reloadData];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id CSV) {
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id value) {
         NSLog(@"Failure!");
+        if (self.hasData == NO)
+        {
+            self.time = [[NSArray alloc] initWithObjects:
+                         [NSArray arrayWithObjects:@"Could not retrieve data", @"Last update", nil],
+                         [NSArray arrayWithObjects:@"", @"Date", nil],
+                         //[NSArray arrayWithObjects:@"", @"Day", nil],
+                         //[NSArray arrayWithObjects:@"", @"Month", nil],
+                         nil];
+            self.wind = [[NSArray alloc] initWithObjects:
+                         [NSArray arrayWithObjects:@"", @"Average wind speed", nil],
+                         [NSArray arrayWithObjects:@"", @"Gusts", nil],
+                         [NSArray arrayWithObjects:@"", @"Wind direction", nil],
+                         [NSArray arrayWithObjects:@"", @"Maximum average wind speed", nil],
+                         [NSArray arrayWithObjects:@"", @"Average wind direction", nil],
+                         [NSArray arrayWithObjects:@"", @"Maximum wind gust", nil],
+                         nil];
+            self.temperature = [[NSArray alloc] initWithObjects:
+                                [NSArray arrayWithObjects:@"", @"Temperature", nil],
+                                [NSArray arrayWithObjects:@"", @"Outdoor humidity", nil],
+                                [NSArray arrayWithObjects:@"", @"Indoor temperature", nil],
+                                [NSArray arrayWithObjects:@"", @"Indoor humidity", nil],
+                                [NSArray arrayWithObjects:@"", @"Soil temperature", nil],
+                                [NSArray arrayWithObjects:@"", @"Humidity index", nil],
+                                [NSArray arrayWithObjects:@"", @"Windchill factor", nil],
+                                [NSArray arrayWithObjects:@"", @"Maximum temperature today", nil],
+                                [NSArray arrayWithObjects:@"", @"Minimum temperature today", nil],
+                                [NSArray arrayWithObjects:@"", @"Dew point temperature", nil],
+                                [NSArray arrayWithObjects:@"", @"Maximum humidity index", nil],
+                                [NSArray arrayWithObjects:@"", @"Minimum humidity index", nil],
+                                [NSArray arrayWithObjects:@"", @"Maximum windchill factor", nil],
+                                [NSArray arrayWithObjects:@"", @"Minimum windchill factor", nil],
+                                [NSArray arrayWithObjects:@"", @"Maximum heat index", nil],
+                                [NSArray arrayWithObjects:@"", @"Minimum heat index", nil],
+                                [NSArray arrayWithObjects:@"", @"Heat index", nil],
+                                [NSArray arrayWithObjects:@"", @"Maximum indoor temperature", nil],
+                                [NSArray arrayWithObjects:@"", @"Minimum indoor temperature", nil],
+                                nil];
+            self.rain = [[NSArray alloc] initWithObjects:
+                         [NSArray arrayWithObjects:@"", @"Daily rain", nil],
+                         [NSArray arrayWithObjects:@"", @"Monthly rain", nil],
+                         [NSArray arrayWithObjects:@"", @"Yearly rain", nil],
+                         [NSArray arrayWithObjects:@"", @"Rain rate", nil],
+                         [NSArray arrayWithObjects:@"", @"Maximum rain rate", nil],
+                         [NSArray arrayWithObjects:@"", @"Amount of rain yesterday", nil],
+                         nil];
+            self.misc = [[NSArray alloc] initWithObjects:
+                         [NSArray arrayWithObjects:@"", @"Atmospheric pressure", nil],
+                         [NSArray arrayWithObjects:@"", @"Weather description", nil],
+                         [NSArray arrayWithObjects:@"", @"Barometer trend", nil],
+                         [NSArray arrayWithObjects:@"", @"Cloud height", nil],
+                         [NSArray arrayWithObjects:@"", @"Lightning count since last Min", nil],
+                         [NSArray arrayWithObjects:@"", @"Time of last lightning strike", nil],
+                         [NSArray arrayWithObjects:@"", @"Date of last lightning strike", nil],
+                         //[NSArray arrayWithObjects:@"", @"Header", nil],
+                         //[NSArray arrayWithObjects:@"", @"forecastIcon", nil],
+                         //[NSArray arrayWithObjects:@"", @"wmr968ExtraTemp", nil],
+                         //[NSArray arrayWithObjects:@"", @"wmr968ExtraHum", nil],
+                         //[NSArray arrayWithObjects:@"", @"wmr968ExtraSensor", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraTempSensor1", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraTempSensor2", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraTempSensor3", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraTempSensor4", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraTempSensor5", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraTempSensor6", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraHumSensor1", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraHumSensor2", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraHumSensor3", nil],
+                         //[NSArray arrayWithObjects:@"", @"stationName", nil],
+                         //[NSArray arrayWithObjects:@"", @"dallasLightningCount", nil],
+                         //[NSArray arrayWithObjects:@"", @"solarReading", nil],
+                         //[NSArray arrayWithObjects:@"", @"wmr968Battery1", nil],
+                         //[NSArray arrayWithObjects:@"", @"wmr968Battery2", nil],
+                         //[NSArray arrayWithObjects:@"", @"wmr968Battery3", nil],
+                         //[NSArray arrayWithObjects:@"", @"wmr968Battery4", nil],
+                         //[NSArray arrayWithObjects:@"", @"wmr968Battery5", nil],
+                         //[NSArray arrayWithObjects:@"", @"wmr968Battery6", nil],
+                         //[NSArray arrayWithObjects:@"", @"wmr968Battery7", nil],
+                         //[NSArray arrayWithObjects:@"", @"iconType", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour01", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour02", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour03", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour04", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour05", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour06", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour07", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour08", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour09", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour10", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour11", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour12", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour13", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour14", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour15", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour16", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour17", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour18", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour19", nil],
+                         //[NSArray arrayWithObjects:@"", @"windspeedHour20", nil],
+                         //[NSArray arrayWithObjects:@"", @"davisVPUV", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindspeed01", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindspeed02", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindspeed03", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindspeed04", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindspeed05", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindspeed06", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindspeed07", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindspeed08", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindspeed09", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindspeed10", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrTemp01", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrTemp02", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrTemp03", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrTemp04", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrTemp05", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrTemp06", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrTemp07", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrTemp08", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrTemp09", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrTemp10", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrRain01", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrRain02", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrRain03", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrRain04", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrRain05", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrRain06", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrRain07", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrRain08", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrRain09", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrRain10", nil],
+                         //[NSArray arrayWithObjects:@"", @"nexstormDist", nil],
+                         //[NSArray arrayWithObjects:@"", @"nexStormBearing", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraTempSensor7", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraTempSensor8", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraHumSensor4", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraHumSensor5", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraHumSensor6", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraHumSensor7", nil],
+                         //[NSArray arrayWithObjects:@"", @"extraHumSensor8", nil],
+                         //[NSArray arrayWithObjects:@"", @"vpSolarwm", nil],
+                         //[NSArray arrayWithObjects:@"", @"apparentTemp", nil],
+                         //[NSArray arrayWithObjects:@"", @"maxBaro", nil],
+                         //[NSArray arrayWithObjects:@"", @"minBaro", nil],
+                         //[NSArray arrayWithObjects:@"", @"maxGust", nil],
+                         //[NSArray arrayWithObjects:@"", @"maxGustLastHourTime", nil],
+                         //[NSArray arrayWithObjects:@"", @"maxGustToday", nil],
+                         //[NSArray arrayWithObjects:@"", @"maxApparentTemp", nil],
+                         //[NSArray arrayWithObjects:@"", @"minApparentTemp", nil],
+                         //[NSArray arrayWithObjects:@"", @"maxDewpt", nil],
+                         //[NSArray arrayWithObjects:@"", @"minDewpt", nil],
+                         //[NSArray arrayWithObjects:@"", @"maxGustInLstMin", nil],
+                         //[NSArray arrayWithObjects:@"", @"currentYear", nil],
+                         //[NSArray arrayWithObjects:@"", @"THSWS", nil],
+                         //[NSArray arrayWithObjects:@"", @"tempTrend_Logic", nil],
+                         //[NSArray arrayWithObjects:@"", @"humidityTrend_Logic", nil],
+                         //[NSArray arrayWithObjects:@"", @"humidexTrend_Logic", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindDir01", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindDir02", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindDir03", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindDir04", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindDir05", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindDir06", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindDir07", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindDir08", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindDir09", nil],
+                         //[NSArray arrayWithObjects:@"", @"hrWindDir10", nil],
+                         //[NSArray arrayWithObjects:@"", @"leafWetness", nil],
+                         //[NSArray arrayWithObjects:@"", @"soilmoisture", nil],
+                         //[NSArray arrayWithObjects:@"", @"10MinAvgWindSpeed", nil],
+                         //[NSArray arrayWithObjects:@"", @"wetbulbtemperature", nil],
+                         //[NSArray arrayWithObjects:@"", @"latitude_SHemispher", nil],
+                         //[NSArray arrayWithObjects:@"", @"longitude_EASTofGMT", nil],
+                         //[NSArray arrayWithObjects:@"", @"9amresetraintotal", nil],
+                         //[NSArray arrayWithObjects:@"", @"midnightresetraintotal", nil],
+                         //[NSArray arrayWithObjects:@"", @"recordEnd_WDVer", nil],
+                         nil];
+            self.sections = [[NSMutableArray alloc] initWithObjects:self.time, self.wind, self.temperature, self.rain, self.misc, nil];
+            
+            [self.tableView reloadData];
+        }
     }];
     
     [operation start];
@@ -222,6 +405,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    // View is loaded into memory, and has appeared on screen - grap the data from server
     [self getRandersWeather];
 }
 
@@ -240,8 +424,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Identifier for the cell in the storyboard
     static NSString *CellIdentifier = @"WeatherStationCell";
     
+    // Reuse the cell created in the storyboard
     WeatherStationTableViewCell *cell = [tableView
                               dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
@@ -251,7 +437,7 @@
                 reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell...
+    // Add content in the labels in the cell...
     NSArray *sectionContents = [self.sections objectAtIndex:[indexPath section]];
     
     id elementInArray = [sectionContents objectAtIndex:[indexPath row]];
@@ -265,6 +451,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;
 {
+    // Section headlines
     switch (section)
     {
         case 0:

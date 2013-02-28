@@ -19,4 +19,6 @@
 
 @property (nonatomic, strong) NSMutableArray * sections;
 
+@property (nonatomic, assign) BOOL * hasData;
+
 @end
