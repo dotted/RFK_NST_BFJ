@@ -79,8 +79,9 @@ int i;
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    myThread = [[NSThread alloc] initWithTarget:self selector:@selector(loadMapPins:) object:self.mapView];
-    [myThread start];
+    //myThread = [[NSThread alloc] initWithTarget:self selector:@selector(loadMapPins:) object:self.mapView];
+    //[myThread start];
+    [self loadMapPins:self.mapView];
 }
 
 -(void)loadMapPins:(MKMapView *)mapView

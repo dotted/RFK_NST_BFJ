@@ -28,11 +28,16 @@
     return self;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.dmi.dk/dmi/mobil2"]]];
+
+}
+
 - (void)viewDidLoad
 {
     segment.segmentedControlStyle = UISegmentedControlStyleBar;
     segment.tintColor = [UIColor darkGrayColor];
-    [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.dmi.dk/dmi/mobil2"]]];
     [super viewDidLoad];
     myWebView.delegate = self;
     segment.selectedSegmentIndex = -1;

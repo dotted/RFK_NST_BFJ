@@ -15,14 +15,13 @@
 
 @interface MapViewController : UIViewController
 
-@property (atomic, strong) id <DataControllerDelegate> dcDelegateMap;
+@property (strong, atomic) id <DataControllerDelegate> dcDelegateMap;
 @property (strong, atomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) NSString *dbPath;
-
-@property (weak, nonatomic) IBOutlet UIView *informationBox;
-//@property (strong, atomic) NSThread *myThread;
-- (IBAction)switchAction:(UISwitch *)sender;
 @property (strong, nonatomic) IBOutlet UISwitch *switchStatus;
+@property (strong, nonatomic) IBOutlet UIView *informationBox;
+
+- (IBAction)switchAction:(UISwitch *)sender;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *labelICAO;
 @property (weak, nonatomic) IBOutlet UILabel *labelAirfield;
