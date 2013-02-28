@@ -29,9 +29,7 @@
     AFCSVRequestOperation *operation = [AFCSVRequestOperation CSVRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id value)
     {
         self.time = [[NSArray alloc] initWithObjects:
-                     [NSArray arrayWithObjects:value[0][29], @"Hour", nil],
-                     [NSArray arrayWithObjects:value[0][30], @"Minute", nil],
-                     [NSArray arrayWithObjects:value[0][31], @"Seconds", nil],
+                     [NSArray arrayWithObjects:[[NSArray arrayWithObjects:value[0][29], value[0][30], value[0][31], nil] componentsJoinedByString:@":"], @"Last update", nil],
                      [NSArray arrayWithObjects:value[0][74], @"Date", nil],
                      //[NSArray arrayWithObjects:value[0][35], @"Day", nil],
                      //[NSArray arrayWithObjects:value[0][36], @"Month", nil],
