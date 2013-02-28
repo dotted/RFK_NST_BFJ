@@ -219,8 +219,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self getRandersWeather];
     [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(getRandersWeather) userInfo:nil repeats:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self getRandersWeather];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
