@@ -57,6 +57,7 @@ int i;
     self.dcDelegateMap = [[DBDataController alloc] init];
     mapView.delegate = self;
     [self loadMap];
+
  }
 
 -(void)loadMap {
@@ -72,13 +73,14 @@ int i;
    // NSLog(@"%f %f %f %f", myregion.center.latitude, myregion.center.longitude, myregion.span.longitudeDelta, myregion.span.latitudeDelta);
 
     [self.mapView setRegion:myregion animated:YES];
-    myThread = [[NSThread alloc] initWithTarget:self selector:@selector(loadMapPins:) object:mapView];
-    [myThread start];
-    
 
-    //[self loadMapPins:mapView];
-//    [self loadMapPins:mapView];
     //NSLog(@"Done loading map");
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    myThread = [[NSThread alloc] initWithTarget:self selector:@selector(loadMapPins:) object:self.mapView];
+    [myThread start];
 }
 
 -(void)loadMapPins:(MKMapView *)mapView
