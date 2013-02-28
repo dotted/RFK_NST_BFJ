@@ -241,9 +241,6 @@
 				350CEF8816D39C2600329D5C /* Default1.png */,
 				350CEF8A16D39C2600329D5C /* Default@2x.png */,
 				350CEF8C16D39C2600329D5C /* Default-568h@2x.png */,
-				3586375C16D4F4C6007C5E40 /* DBDataController.h */,
-				3586375D16D4F4C6007C5E40 /* DBDataController.m */,
-				3586375F16D4F55F007C5E40 /* DataControllerDelegate.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -352,6 +349,9 @@
 		35AFE14116D3A74B00FA4AE8 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				3586375C16D4F4C6007C5E40 /* DBDataController.h */,
+				3586375D16D4F4C6007C5E40 /* DBDataController.m */,
+				3586375F16D4F55F007C5E40 /* DataControllerDelegate.h */,
 				3586375916D4F0EB007C5E40 /* Airfield.h */,
 				3586375A16D4F0EB007C5E40 /* Airfield.m */,
 				358269E016D3B3A300C2F28E /* MapViewController.h */,

@@ -60,7 +60,10 @@ int i;
 
  }
 
--(void)loadMap {
+-(void)loadMap
+//Load map and center on Randers showing while of Denmark.
+
+{
     //NSLog(@"Loading map");
     self.mapView.mapType = MKMapTypeSatellite;
     
@@ -71,7 +74,7 @@ int i;
     myregion.span.longitudeDelta = 8.437499;
     
    // NSLog(@"%f %f %f %f", myregion.center.latitude, myregion.center.longitude, myregion.span.longitudeDelta, myregion.span.latitudeDelta);
-
+    //Apply the region
     [self.mapView setRegion:myregion animated:YES];
 
     //NSLog(@"Done loading map");
@@ -79,16 +82,20 @@ int i;
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    //Load all map pins in another thread.. (Unstable, crashes 1 of 5 times)
     //myThread = [[NSThread alloc] initWithTarget:self selector:@selector(loadMapPins:) object:self.mapView];
     //[myThread start];
     [self loadMapPins:self.mapView];
 }
 
 -(void)loadMapPins:(MKMapView *)mapView
+//Load map pins for airfields.
 {
+    //Initialize an mutable Array.
     NSMutableArray *myAnnotations = [[NSMutableArray alloc] init];
+    //Get all airfields from database
     NSArray *airfieldList = [self.dcDelegateMap getAll:self];
-
+    //Go through all airfields and add an Annotations object to the myAnnotations array
     for (Airfield *airfield in airfieldList)
     {
         CLLocationCoordinate2D airfieldCoords;
@@ -100,17 +107,20 @@ int i;
         [myAnnotation setSubtitle:airfield.icao];
         [myAnnotations addObject:myAnnotation];
     }
+    //Draw all annotations
     [self.mapView addAnnotations:myAnnotations];
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
 {
+    //Get the selected annotations.
     id<MKAnnotation> selectedAnnotation = [mapView selectedAnnotations][0];
-
+    //Change the color of selected annotation and set title and subtitle.
     view.pinColor = MKPinAnnotationColorPurple;
     selectedPin = selectedAnnotation.title;
     labelAirfield.text = selectedPin;
     labelICAO.text = selectedAnnotation.subtitle;
+    //Get weather information from geonames if available for ICAO
     [self getIcaoWeather:selectedAnnotation.subtitle];
 
     NSLog(@"Selecting pin: %@", selectedPin);
@@ -119,6 +129,7 @@ int i;
 
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKPinAnnotationView *)view
 {
+    //Reset state of pin when deselected
     view.pinColor = MKPinAnnotationColorRed;    
     NSLog(@"De-Selecting pin: %@", selectedPin);
     [self clearWeatherInformation];
@@ -130,40 +141,44 @@ int i;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
-{
-    //Load all Markers for airfields.
-}
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
+    //Deprecated used when loading current region pins only.
     //NSLog(@"Region changed");
     // Update markers on the map when the position changes... not implemented
 }
 
 -(void)getIcaoWeather:(NSString *)icao
+//Get weather information for ICAO given as argument from geonames.org
 {
+    // Set string with URL
     NSString *icaoUrl = [NSString stringWithFormat:@"http://api.geonames.org/weatherIcaoJSON?formatted=true&ICAO=%@&username=nstios&style=full", icao];
     NSLog(@"Requesting on URL: %@#", icaoUrl);
+    //Create URL request
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:icaoUrl]];
+    //Call URLConnection with the request.
     conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 -(void)connection:(NSURLConnection *)conn didReceiveResponse:(NSURLResponse *)response
 {
+    //Initialize urlData if a http response been received
     urlData = [[NSMutableData alloc] init];
 }
 
 -(void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)data
 {
-    NSLog(@"Test");
+    //Append received data to urlData
     [urlData appendData:data];
 }
 
 -(void)connection:(NSURLConnection *)conn didFailWithError:(NSError *)error
 {
+    //Log errors
     NSLog(@"Connection failed: %@", [error localizedDescription]);
     NSLog(@"Error code: %d" , [error code]);
+    //If no internet connection inform the user by setting the labels.
     if (-1009 == [error code])
     {
         NSString *no_internet = @"No Internet";
@@ -178,7 +193,9 @@ int i;
 }
 
 -(void)loadWeatherInformation:(NSDictionary *)dict
+//Update weather information labels with data.
 {
+    //Check if the dictionary has the wanted keys, if not dont add data.
     //NSLog(@"%@", dict);
     if ([dict objectForKey:@"temperature"])
         labelTemperature.text = [NSString stringWithFormat:@"%@°C",dict[@"temperature"]];
@@ -195,6 +212,7 @@ int i;
 }
 
 -(void)clearWeatherInformation
+//Reset all labels
 {
     NSLog(@"Clearing weather information");
     labelAirfield.text = @"";
@@ -208,9 +226,11 @@ int i;
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
+//When the URL connection finishes loading, create dictionary from the JSON received.
 {
     NSError *jsonParsingError = nil;
-    if (conn) {
+    if (conn)
+    {
         id object = [NSJSONSerialization JSONObjectWithData:urlData options:0 error:&jsonParsingError];
         
         if (jsonParsingError)
@@ -226,8 +246,10 @@ int i;
 }
 
 - (IBAction)switchAction:(UISwitch *)sender
+//Turn ON or OFF all map pins based on status on the switch controller.
 {
     NSArray *annotations = [self.mapView annotations];
+    //Run through all annotations on the mapview.
     for (i=0; i<[annotations count]; i++)
     {
         id<MKAnnotation> ann = [annotations objectAtIndex:i];

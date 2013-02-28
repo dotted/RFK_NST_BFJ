@@ -30,19 +30,23 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    //Load default website in webview
     [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.dmi.dk/dmi/mobil2"]]];
 
 }
 
 - (void)viewDidLoad
 {
+    //Change style and color of the segmented controller.
     segment.segmentedControlStyle = UISegmentedControlStyleBar;
     segment.tintColor = [UIColor darkGrayColor];
+    //Dont highlight any "button" at start
+    segment.selectedSegmentIndex = -1;
+    //Only show selected while pushing "button"
+    segment.momentary = YES;
+    
     [super viewDidLoad];
     myWebView.delegate = self;
-    segment.selectedSegmentIndex = -1;
-    segment.momentary = YES;
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,6 +56,7 @@
 }
 
 - (IBAction)changeWebSite:(UISegmentedControl *)sender
+// Change website when "button" is pushed.
 {
     labelErrorDescription.text = @"";
     if  (segment.selectedSegmentIndex == 0)
@@ -73,24 +78,30 @@
 }
 
 - (IBAction)backBtn:(id)sender
+//Go back whenever back button is pressed
 {
     [myWebView goBack];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    //Stop animation "loading" indicator when webview finishes loading
     [loadIndicator stopAnimating];
 }
 -(void)webViewDidStartLoad:(UIWebView *)webView
 {
+    //Start animation of "loading" indicator on webview load.
     [loadIndicator startAnimating];
 }
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    NSLog(@"Error: %@", [error localizedDescription]);
+    //Log error messages.
+    //NSLog(@"Error: %@", error);
+    //NSLog(@"Error local Description: %@", [error localizedDescription]);
     if ([error code] == -1009)
     {
+        //Load blank page and show error when theres no internet connection available
         [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
         labelErrorDescription.text = [NSString stringWithFormat:@"%@", [error localizedDescription]];
     }

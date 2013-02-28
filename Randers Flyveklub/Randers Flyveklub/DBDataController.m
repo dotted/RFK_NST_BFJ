@@ -19,7 +19,7 @@
     sqlite3_stmt        *sql_query;
 }
 
-//Copy a named resource from bundle to Documents/Data
+//Copy a named resource from app bundle to sandbox.
 
 - (NSString *)copyResource:(NSString *)resource ofType:(NSString *)type
 {
@@ -90,7 +90,7 @@
 {
     if (!sql_query)
     {
-        // Prepare SQL select statement
+        // Prepare the SQL select statement
         NSString *sql = @"SELECT name, icao, country, lat, long FROM airfields";// WHERE country = 'Denmark'";
         if (sqlite3_prepare_v2(dbhandle, [sql UTF8String], -1, &sql_query, nil) != SQLITE_OK)
         {
@@ -101,7 +101,7 @@
     
     // Reset state of query statement
     sqlite3_reset(sql_query);
-    // Fetch selected rows in airfields table and populate data array
+    // Fetch selected rows in airfields table and append to data array
     while (sqlite3_step(sql_query) == SQLITE_ROW)
     {
         Airfield *airfield = [[Airfield alloc] init];
@@ -125,9 +125,11 @@
     return data;
 }
 
+
+-(NSMutableArray *) getVisible:(MapViewController *)controller FromCoordinates:(NSDictionary *)coordinates
+//Deprecated!
 // Fetch airfield objects from data storage
 // Return array with airfield objects, selected according to SQL statement
--(NSMutableArray *) getVisible:(MapViewController *)controller FromCoordinates:(NSDictionary *)coordinates
 {
     
     [data removeAllObjects];
