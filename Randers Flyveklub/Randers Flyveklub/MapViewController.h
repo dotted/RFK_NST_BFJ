@@ -25,8 +25,8 @@
 @property (strong, nonatomic) IBOutlet UISwitch *switchStatus;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelICAO;
-@property (weak, nonatomic) IBOutlet UILabel *airfieldText;
-@property (weak, nonatomic) IBOutlet UILabel *temperatureText;
+@property (weak, nonatomic) IBOutlet UILabel *labelAirfield;
+@property (weak, nonatomic) IBOutlet UILabel *labelTemperature;
 @property (weak, nonatomic) IBOutlet UILabel *labelHumidity;
 @property (weak, nonatomic) IBOutlet UILabel *labelClouds;
 @property (weak, nonatomic) IBOutlet UILabel *labelWindDirection;

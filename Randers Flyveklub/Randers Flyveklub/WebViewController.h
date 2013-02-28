@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loadIndicator;
 
+@property (strong, nonatomic) IBOutlet UILabel *labelErrorDescription;
 
 - (IBAction)changeWebSite:(UISegmentedControl *)sender;
 - (IBAction)backBtn:(id)sender;

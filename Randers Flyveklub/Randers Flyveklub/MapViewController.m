@@ -17,9 +17,9 @@
 
 @synthesize mapView;
 @synthesize dcDelegateMap;
-@synthesize airfieldText;
+@synthesize labelAirfield;
 @synthesize labelICAO;
-@synthesize temperatureText;
+@synthesize labelTemperature;
 @synthesize labelHumidity;
 @synthesize labelClouds;
 @synthesize labelWindDirection;
@@ -111,7 +111,7 @@ int i;
 
     view.pinColor = MKPinAnnotationColorPurple;
     selectedPin = selectedAnnotation.title;
-    airfieldText.text = selectedPin;
+    labelAirfield.text = selectedPin;
     labelICAO.text = selectedAnnotation.subtitle;
     [self getIcaoWeather:selectedAnnotation.subtitle];
 
@@ -178,19 +178,32 @@ int i;
 
 -(void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)data
 {
+    NSLog(@"Test");
     [urlData appendData:data];
 }
 
 -(void)connection:(NSURLConnection *)conn didFailWithError:(NSError *)error
 {
     NSLog(@"Connection failed: %@", [error localizedDescription]);
+    NSLog(@"Error code: %d" , [error code]);
+    if (-1009 == [error code])
+    {
+        NSString *no_internet = @"No Internet";
+        labelCountryCode.text = no_internet;
+        labelTemperature.text = no_internet;
+        labelHumidity.text = no_internet;
+        labelClouds.text = no_internet;
+        labelWindDirection.text = no_internet;
+        labelWindSpeed.text = no_internet;
+    }
+    
 }
 
 -(void)loadWeatherInformation:(NSDictionary *)dict
 {
     //NSLog(@"%@", dict);
     if ([dict objectForKey:@"temperature"])
-        temperatureText.text = [NSString stringWithFormat:@"%@°C",dict[@"temperature"]];
+        labelTemperature.text = [NSString stringWithFormat:@"%@°C",dict[@"temperature"]];
     if ([dict objectForKey:@"humidity"])
         labelHumidity.text = [NSString stringWithFormat:@"%@" , dict[@"humidity"]];
     if ([dict objectForKey:@"clouds"])
@@ -206,9 +219,9 @@ int i;
 -(void)clearWeatherInformation
 {
     NSLog(@"Clearing weather information");
-    airfieldText.text = @"";
+    labelAirfield.text = @"";
     labelICAO.text = @"";
-    temperatureText.text = @"";
+    labelTemperature.text = @"";
     labelHumidity.text = @"";
     labelClouds.text = @"";
     labelWindDirection.text = @"";

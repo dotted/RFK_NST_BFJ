@@ -203,17 +203,17 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="airfieldText" destination="2xd-5h-GuJ" id="4am-4A-6dA"/>
                         <outlet property="informationBox" destination="LLA-Hj-Uup" id="fe5-e7-GOA"/>
+                        <outlet property="labelAirfield" destination="2xd-5h-GuJ" id="BjJ-L2-KZQ"/>
                         <outlet property="labelClouds" destination="4yy-qv-1eg" id="vt8-AS-HVS"/>
                         <outlet property="labelCountryCode" destination="sBl-yU-Y9m" id="noN-vg-Egk"/>
-                        <outlet property="labelHumidity" destination="vSd-hW-QWm" id="8T6-vo-h0c"/>
-                        <outlet property="labelICAO" destination="BQZ-Ok-i5l" id="Tm8-Zi-anv"/>
+                        <outlet property="labelHumidity" destination="vSd-hW-QWm" id="6YD-Qu-2Ca"/>
+                        <outlet property="labelICAO" destination="BQZ-Ok-i5l" id="hqh-zD-x8t"/>
+                        <outlet property="labelTemperature" destination="XHZ-eA-kdg" id="Tdh-4p-Fei"/>
                         <outlet property="labelWindDirection" destination="8nu-N9-62n" id="lSZ-Hn-TOe"/>
                         <outlet property="labelWindSpeed" destination="ahx-pD-3qf" id="3Z2-wc-u0w"/>
                         <outlet property="mapView" destination="YrX-Jl-LNA" id="L8g-bX-niO"/>
                         <outlet property="switchStatus" destination="nSK-Ey-Nej" id="uSa-rI-jDs"/>
-                        <outlet property="temperatureText" destination="XHZ-eA-kdg" id="3j1-HQ-xRb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
@@ -289,6 +289,15 @@
                                 </items>
                             </navigationBar>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="D9c-fY-YP8"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mof-Xj-0Gz">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="638" id="NY3-Y8-rN4"/>
+                                    <constraint firstAttribute="height" constant="165" id="Oed-TN-fjN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -296,6 +305,8 @@
                             <constraint firstItem="obA-2A-Clz" firstAttribute="trailing" secondItem="Ett-tI-Dac" secondAttribute="trailing" type="default" id="9rQ-7N-n0r"/>
                             <constraint firstItem="C57-hd-ydC" firstAttribute="leading" secondItem="Ett-tI-Dac" secondAttribute="leading" type="default" id="AWT-vd-rgP"/>
                             <constraint firstItem="obA-2A-Clz" firstAttribute="leading" secondItem="Ett-tI-Dac" secondAttribute="leading" type="default" id="K5r-0e-3YX"/>
+                            <constraint firstItem="Mof-Xj-0Gz" firstAttribute="top" secondItem="Ett-tI-Dac" secondAttribute="top" constant="173" id="Lum-bD-nF0"/>
+                            <constraint firstItem="Mof-Xj-0Gz" firstAttribute="leading" secondItem="Ett-tI-Dac" secondAttribute="leading" constant="27" id="NdI-Ca-w9h"/>
                             <constraint firstItem="C57-hd-ydC" firstAttribute="bottom" secondItem="Ett-tI-Dac" secondAttribute="bottom" type="default" id="W9e-KZ-d6x"/>
                             <constraint firstItem="D9c-fY-YP8" firstAttribute="centerY" secondItem="obA-2A-Clz" secondAttribute="centerY" type="default" id="e6b-Re-412"/>
                             <constraint firstItem="C57-hd-ydC" firstAttribute="top" secondItem="obA-2A-Clz" secondAttribute="bottom" type="default" id="kx7-8b-YMi"/>
@@ -304,6 +315,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Links" image="first.png" id="2RI-NR-ylK"/>
                     <connections>
+                        <outlet property="labelErrorDescription" destination="Mof-Xj-0Gz" id="F2w-dC-VJG"/>
                         <outlet property="loadIndicator" destination="D9c-fY-YP8" id="YXq-Ht-h40"/>
                         <outlet property="myWebView" destination="C57-hd-ydC" id="Tfr-FU-8z5"/>
                         <outlet property="segment" destination="alq-6q-Qpx" id="aso-1i-wWv"/>

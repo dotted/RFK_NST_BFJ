@@ -17,6 +17,7 @@
 @synthesize myWebView;
 @synthesize segment;
 @synthesize loadIndicator;
+@synthesize labelErrorDescription;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +30,8 @@
 
 - (void)viewDidLoad
 {
+    segment.segmentedControlStyle = UISegmentedControlStyleBar;
+    segment.tintColor = [UIColor darkGrayColor];
     [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.dmi.dk/dmi/mobil2"]]];
     [super viewDidLoad];
     myWebView.delegate = self;
@@ -45,6 +48,7 @@
 
 - (IBAction)changeWebSite:(UISegmentedControl *)sender
 {
+    labelErrorDescription.text = @"";
     if  (segment.selectedSegmentIndex == 0)
     {
         [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.dmi.dk/dmi/mobil2"]]];
@@ -75,6 +79,16 @@
 -(void)webViewDidStartLoad:(UIWebView *)webView
 {
     [loadIndicator startAnimating];
+}
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", [error localizedDescription]);
+    if ([error code] == -1009)
+    {
+        [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+        labelErrorDescription.text = [NSString stringWithFormat:@"%@", [error localizedDescription]];
+    }
 }
 
 @end
