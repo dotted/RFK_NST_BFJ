@@ -11,7 +11,12 @@
 
 @interface WeatherStationViewController : UITableViewController
 
-@property (nonatomic, strong) NSMutableArray * clientRawData;
-@property (nonatomic, strong) NSMutableArray * descriptions;
+@property (nonatomic, strong) NSArray * time;
+@property (nonatomic, strong) NSArray * wind;
+@property (nonatomic, strong) NSArray * temperature;
+@property (nonatomic, strong) NSArray * rain;
+@property (nonatomic, strong) NSArray * misc;
+
+@property (nonatomic, strong) NSMutableArray * sections;
 
 @end
