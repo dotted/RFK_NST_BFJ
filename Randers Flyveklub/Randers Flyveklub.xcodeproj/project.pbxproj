@@ -52,7 +52,6 @@
 		35AFE14016D3A54B00FA4AE8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AFE13F16D3A54B00FA4AE8 /* CoreLocation.framework */; };
 		35DCFD5316DF550B00E8DAFB /* RFK_Icon_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 35DCFD5216DF550B00E8DAFB /* RFK_Icon_Normal.png */; };
 		35DCFD5516DF554F00E8DAFB /* RFK_Icon_Retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 35DCFD5416DF554F00E8DAFB /* RFK_Icon_Retina.png */; };
-		35DCFD5716DF569900E8DAFB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 35DCFD5616DF569900E8DAFB /* Default.png */; };
 		35DCFD5B16DF5C7F00E8DAFB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 35DCFD5A16DF5C7F00E8DAFB /* Default.png */; };
 /* End PBXBuildFile section */
 
@@ -444,7 +443,6 @@
 				3586375716D4D3D6007C5E40 /* airfields.rdb in Resources */,
 				35DCFD5316DF550B00E8DAFB /* RFK_Icon_Normal.png in Resources */,
 				35DCFD5516DF554F00E8DAFB /* RFK_Icon_Retina.png in Resources */,
-				35DCFD5716DF569900E8DAFB /* Default.png in Resources */,
 				35DCFD5B16DF5C7F00E8DAFB /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
