@@ -48,10 +48,10 @@
 		3586375716D4D3D6007C5E40 /* airfields.rdb in Resources */ = {isa = PBXBuildFile; fileRef = 3586375616D4D3D6007C5E40 /* airfields.rdb */; };
 		3586375B16D4F0EB007C5E40 /* Airfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 3586375A16D4F0EB007C5E40 /* Airfield.m */; };
 		3586375E16D4F4C6007C5E40 /* DBDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3586375D16D4F4C6007C5E40 /* DBDataController.m */; };
-		35975E5B16E014F000C42600 /* ADClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35975E5416E014F000C42600 /* ADClusterAnnotation.m */; };
-		35975E5C16E014F000C42600 /* ADClusterMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35975E5616E014F000C42600 /* ADClusterMapView.m */; };
-		35975E5D16E014F000C42600 /* ADMapCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 35975E5816E014F000C42600 /* ADMapCluster.m */; };
-		35975E5E16E014F000C42600 /* ADMapPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35975E5A16E014F000C42600 /* ADMapPointAnnotation.m */; };
+		35975E5B16E014F000C42600 /* ADClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35975E5416E014F000C42600 /* ADClusterAnnotation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		35975E5C16E014F000C42600 /* ADClusterMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35975E5616E014F000C42600 /* ADClusterMapView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		35975E5D16E014F000C42600 /* ADMapCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 35975E5816E014F000C42600 /* ADMapCluster.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		35975E5E16E014F000C42600 /* ADMapPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35975E5A16E014F000C42600 /* ADMapPointAnnotation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		35AFE13E16D3A4CD00FA4AE8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AFE13D16D3A4CC00FA4AE8 /* MapKit.framework */; };
 		35AFE14016D3A54B00FA4AE8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AFE13F16D3A54B00FA4AE8 /* CoreLocation.framework */; };
 		35DCFD5316DF550B00E8DAFB /* RFK_Icon_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 35DCFD5216DF550B00E8DAFB /* RFK_Icon_Normal.png */; };

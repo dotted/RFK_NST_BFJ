@@ -15,7 +15,7 @@
 
 @implementation MapViewController
 
-@synthesize mapView;
+@synthesize mapView = _mapView;
 @synthesize dcDelegateMap;
 @synthesize labelAirfield;
 @synthesize labelICAO;
@@ -55,9 +55,30 @@ int i;
     */
     [super viewDidLoad];
     self.dcDelegateMap = [[DBDataController alloc] init];
-    mapView.delegate = self;
     [self loadMap];
-
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        //Initialize an mutable Array.
+        NSMutableArray *myAnnotations = [[NSMutableArray alloc] init];
+        //Get all airfields from database
+        NSArray *airfieldList = [self.dcDelegateMap getAll:self];
+        //Go through all airfields and add an Annotations object to the myAnnotations array
+        for (Airfield *airfield in airfieldList)
+        {
+            CLLocationCoordinate2D airfieldCoords;
+            airfieldCoords.latitude = airfield.lat;
+            airfieldCoords.longitude = airfield.lng;
+            MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc] init];
+            [myAnnotation setCoordinate:airfieldCoords];
+            [myAnnotation setTitle:airfield.name];
+            [myAnnotation setSubtitle:airfield.icao];
+            [myAnnotations addObject:myAnnotation];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.mapView setAnnotations:myAnnotations];
+        });
+    });
+    
  }
 
 -(void)loadMap
@@ -80,38 +101,7 @@ int i;
     //NSLog(@"Done loading map");
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    //Load all map pins in another thread.. (Unstable, crashes 1 of 5 times)
-    //myThread = [[NSThread alloc] initWithTarget:self selector:@selector(loadMapPins:) object:self.mapView];
-    //[myThread start];
-    [self loadMapPins:self.mapView];
-}
-
--(void)loadMapPins:(MKMapView *)mapView
-//Load map pins for airfields.
-{
-    //Initialize an mutable Array.
-    NSMutableArray *myAnnotations = [[NSMutableArray alloc] init];
-    //Get all airfields from database
-    NSArray *airfieldList = [self.dcDelegateMap getAll:self];
-    //Go through all airfields and add an Annotations object to the myAnnotations array
-    for (Airfield *airfield in airfieldList)
-    {
-        CLLocationCoordinate2D airfieldCoords;
-        airfieldCoords.latitude = airfield.lat;
-        airfieldCoords.longitude = airfield.lng;
-        MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc] init];
-        [myAnnotation setCoordinate:airfieldCoords];
-        [myAnnotation setTitle:airfield.name];
-        [myAnnotation setSubtitle:airfield.icao];
-        [myAnnotations addObject:myAnnotation];
-    }
-    //Draw all annotations
-    [self.mapView addAnnotations:myAnnotations];
-}
-
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
+- (void)mapView:(ADClusterMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
 {
     //Get the selected annotations.
     id<MKAnnotation> selectedAnnotation = [mapView selectedAnnotations][0];
@@ -127,7 +117,7 @@ int i;
 }
 
 
-- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKPinAnnotationView *)view
+- (void)mapView:(ADClusterMapView *)mapView didDeselectAnnotationView:(MKPinAnnotationView *)view
 {
     //Reset state of pin when deselected
     view.pinColor = MKPinAnnotationColorRed;    
@@ -142,7 +132,7 @@ int i;
     // Dispose of any resources that can be recreated.
 }
 
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+- (void)mapView:(ADClusterMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
     //Deprecated used when loading current region pins only.
     //NSLog(@"Region changed");
@@ -255,7 +245,7 @@ int i;
         id<MKAnnotation> ann = [annotations objectAtIndex:i];
         if (switchStatus.isOn)
         {
-            [[mapView viewForAnnotation:ann] setHidden:NO];
+            [[self.mapView viewForAnnotation:ann] setHidden:NO];
             //NSLog(@"Is On");
         }
         else if (!(switchStatus.isOn))

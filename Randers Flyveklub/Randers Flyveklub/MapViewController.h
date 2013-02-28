@@ -7,16 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
+//#import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "DataControllerDelegate.h"
 #import "DBDataController.h"
 #import "Airfield.h"
+#import "ADClusterMapView.h"
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController <ADClusterMapViewDelegate>
 
-@property (strong, atomic) id <DataControllerDelegate> dcDelegateMap;
-@property (strong, atomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) id <DataControllerDelegate> dcDelegateMap;
+@property (retain, nonatomic) IBOutlet ADClusterMapView *mapView;
 @property (strong, nonatomic) IBOutlet UISwitch *switchStatus;
 @property (strong, nonatomic) IBOutlet UIView *informationBox;
 
